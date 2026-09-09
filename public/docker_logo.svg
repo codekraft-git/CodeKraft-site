@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175 50" fill="none">
+  <g transform="translate(6, 9) scale(0.72)">
+    <rect x="18" y="10" width="5.5" height="5.5" rx="0.8" fill="#2496ED"/>
+    <rect x="25" y="10" width="5.5" height="5.5" rx="0.8" fill="#2496ED"/>
+    <rect x="25" y="3.5" width="5.5" height="5.5" rx="0.8" fill="#2496ED"/>
+    <rect x="11" y="17" width="5.5" height="5.5" rx="0.8" fill="#2496ED"/>
+    <rect x="18" y="17" width="5.5" height="5.5" rx="0.8" fill="#2496ED"/>
+    <rect x="25" y="17" width="5.5" height="5.5" rx="0.8" fill="#2496ED"/>
+    <rect x="32" y="17" width="5.5" height="5.5" rx="0.8" fill="#2496ED"/>
+    <path d="M47 21C45 20.5 42.5 21.5 41.5 22.5C39 20 35 20 35 20C35 20 28 20 10 20C4 20 1 25 1 28C1 35 7 40 18 40C30 40 40 37 44 29C48 29 50 26 50 24C49 23 48 22 47 21Z" fill="#2496ED"/>
+    <circle cx="10" cy="27" r="1.5" fill="#080e14"/>
+  </g>
+  <text x="54" y="32" fill="#F0F6FC" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.02em">Docker</text>
+</svg>

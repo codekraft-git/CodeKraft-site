@@ -1,0 +1,57 @@
+CODEKRAFT STUDIO — VERSION 5
+
+This is the complete editable website source, including the latest flowing
+smoke separation, scroll reveals, responsive layouts, and original artwork.
+
+RUN LOCALLY
+1. Extract the ZIP completely.
+2. Install Node.js 22.13 or newer, including npm.
+3. Open a terminal in the CodeKraft-Studio folder (where package.json is).
+4. Run:
+
+   npm ci
+   npm run dev
+
+5. Open the localhost address printed in the terminal. The portable
+   development script uses port 5173 by default.
+
+This is a React/TypeScript project. Run the development server to view it;
+there is no standalone index.html to double-click.
+
+BUILD
+   npm run build
+   npm start
+
+The production build targets Cloudflare Workers. npm start previews the
+built Worker locally. Use the URL printed by the command.
+
+CONTACT FORM
+The frontend and animations run without configuring a production database.
+Saving enquiries requires the Cloudflare D1 binding named DB and the included
+SQL migration in drizzle/. The ZIP includes the API and database schema;
+it does not include saved enquiries or production database credentials.
+For another hosting environment, configure compatible database bindings
+and apply the migration before relying on contact submissions.
+
+EDITING
+- components/codekraft/content.ts: services, projects, and products.
+- components/codekraft/studio.tsx: page sections and navigation.
+- components/codekraft/smoke-canvas.tsx: flowing smoke renderer.
+- components/codekraft/use-scroll-motion.ts: scroll timing and reveals.
+- app/globals.css: layout, colors, responsive rules, and animation styling.
+- public/assets/: supplied logo, reference images, and smoke artwork.
+- app/api/contact/route.ts: project enquiry endpoint.
+
+ANIMATION
+Scroll down to part the smoke and fade it to black. Scroll back up to restore
+it. System reduced-motion settings intentionally disable the large movements.
+The original smoke-image layers are retained as a fallback when Canvas 2D
+is unavailable.
+
+CONTENTS
+All version-5 tracked project files are included. Installed dependencies,
+build output, local caches, repository history, and temporary test pages
+are omitted. npm ci restores dependencies using the included lockfile.
+
+The existing Sites identity is retained for the same CodeKraft project.
+Downloading this ZIP does not publish the saved website update.

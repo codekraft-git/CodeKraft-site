@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" fill="none">
+  <circle cx="25" cy="25" r="19" fill="#080c10" stroke="#304154" stroke-width="1.5"/>
+  <path d="M19 16V34M31 16L22.5 28.5" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M22 27.5L31 34" stroke="url(#nextGrad)" stroke-width="2.4" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="nextGrad" x1="22" y1="27.5" x2="31" y2="34" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <text x="56" y="32" fill="#F0F6FC" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.02em">Next.js</text>
+</svg>

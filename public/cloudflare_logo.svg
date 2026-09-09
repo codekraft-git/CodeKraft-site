@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 50" fill="none">
+  <g transform="translate(6, 9) scale(0.72)">
+    <path d="M38 27C37.5 21 32 16.5 25.5 17C24.5 17 23.5 17.5 22.5 18C20.5 13 15.5 9.5 9.5 10C3.5 10.5 -1 15 -1 21C-1 21.5 -1 22 -0.8 22.5C-3.5 24 -5 27 -5 30C-5 34.5 -1.5 38 3 38H37C41 38 44 35 44 31C44 28 41.5 25.5 38 25V27Z" fill="#F38020"/>
+    <path d="M38 27H19C18 27 17 26 17 25C17 24 18 23 19 23H38C39 23 40 24 40 25C40 26 39 27 38 27Z" fill="#FAAE40"/>
+  </g>
+  <text x="56" y="32" fill="#F0F6FC" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="19" font-weight="600" letter-spacing="-0.02em">Cloudflare</text>
+</svg>
