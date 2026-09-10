@@ -44,7 +44,7 @@ export async function POST(request: Request) {
   const data = parsed.data;
   if (data.website) return json({ error: "The form could not be submitted. Please email us directly." }, 400);
   try {
-    const db = contactDb();
+    const db = await contactDb();
     const reference = `CK-${data.requestId.slice(0,8).toUpperCase()}`;
     const existing = await db.prepare("SELECT id FROM contact_submissions WHERE id = ?").bind(data.requestId).first();
     if (existing) return json({ ok: true, reference });
