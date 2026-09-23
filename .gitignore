@@ -5,3 +5,6 @@ Thumbs.db
 .ctf-ironveil/
 .openai/
 .vercel
+
+.vercel
+.env*
