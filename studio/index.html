@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CODEKRAFT STUDIO — Digital Products, Built to Work</title>
+  <meta name="description" content="CodeKraft Studio — Digital Products, Built to Work. Interactive cosmic atmosphere, software engineering and product foundation.">
+  <meta name="theme-color" content="#060913">
+  <link rel="canonical" href="https://www.codekraft.online/studio/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CodeKraft">
+  <meta property="og:url" content="https://www.codekraft.online/studio/">
+  <meta property="og:title" content="CODEKRAFT STUDIO — Digital Products, Built to Work">
+  <meta property="og:description" content="Digital products, built to work. Software engineering, product design, and interactive cosmic experience.">
+  <meta property="og:image" content="https://www.codekraft.online/assets/previews/studio.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CODEKRAFT STUDIO — Digital Products, Built to Work">
+  <meta name="twitter:description" content="Digital products, built to work. Software engineering, product design, and interactive cosmic experience.">
+  <meta name="twitter:image" content="https://www.codekraft.online/assets/previews/studio.jpg">
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/codekraft.svg">
+  <link rel="stylesheet" href="../showroom.css">
+  <style>
+    :root {
+      --studio-bg: #060913;
+      --studio-card: rgba(14, 20, 35, 0.85);
+      --studio-border: rgba(60, 110, 220, 0.18);
+      --studio-glow: rgba(56, 189, 248, 0.25);
+      --studio-cyan: #38bdf8;
+      --studio-blue: #3b82f6;
+    }
+    body {
+      background-color: var(--studio-bg);
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    .back-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(6, 9, 19, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--studio-border);
+      padding: 12px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+    .back-bar a {
+      color: var(--studio-cyan);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+    .back-bar a:hover {
+      text-decoration: underline;
+    }
+    .studio-hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background: radial-gradient(circle at center, rgba(30, 64, 175, 0.25) 0%, rgba(6, 9, 19, 0.95) 75%);
+    }
+    .studio-logo-wrap {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .studio-logo-glow {
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.45) 0%, transparent 70%);
+      filter: blur(25px);
+      z-index: 1;
+    }
+    .studio-logo {
+      position: relative;
+      z-index: 2;
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 35px rgba(56, 189, 248, 0.6));
+    }
+    .studio-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 10px;
+      background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .studio-tagline {
+      font-size: 13px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--studio-cyan);
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+    .studio-desc {
+      max-width: 640px;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #94a3b8;
+      margin: 0 auto 36px;
+    }
+    .studio-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #ffffff;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 0 25px rgba(37, 99, 235, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.6);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #f1f5f9;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      width: min(1200px, 90%);
+      margin: -40px auto 80px;
+      position: relative;
+      z-index: 10;
+    }
+    .metric-card {
+      background: var(--studio-card);
+      border: 1px solid var(--studio-border);
+      padding: 24px;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+    }
+    .metric-num {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .metric-label {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--studio-cyan);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .metric-detail {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+    .studio-section {
+      width: min(1200px, 90%);
+      margin: 0 auto 90px;
+    }
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--studio-cyan);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      margin: 0 0 30px;
+      color: #ffffff;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .product-card {
+      background: var(--studio-card);
+      border: 1px solid var(--studio-border);
+      border-radius: 14px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-badge {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--studio-cyan);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .product-card h3 {
+      font-size: 1.5rem;
+      margin: 0 0 12px;
+      color: #ffffff;
+    }
+    .product-card p {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .codekraft-bar {
+      padding: 22px 5%;
+      background: #020409;
+      border-top: 1px solid var(--studio-border);
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      font-size: 13px;
+    }
+    .codekraft-bar a {
+      color: var(--studio-cyan);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .codekraft-bar a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="back-bar">
+    <a href="../index.html">← Back to CodeKraft Showroom</a>
+    <span>CODEKRAFT / STUDIO TEMPLATE</span>
+    <a href="../index.html?template=17#project">Build This Website ↗</a>
+  </div>
+
+  <main>
+    <section class="studio-hero">
+      <div class="studio-logo-wrap">
+        <div class="studio-logo-glow"></div>
+        <img class="studio-logo" src="../assets/icons/codekraft.svg" alt="CodeKraft Logo">
+      </div>
+      <p class="studio-tagline">Build • Secure • Innovate</p>
+      <h1 class="studio-title">Digital Products,<br>Built to Work.</h1>
+      <p class="studio-desc">CodeKraft designs, builds and secures modern digital products, software and technology solutions. An interactive technology studio built for real-world reliability.</p>
+      <div class="studio-actions">
+        <a class="btn-primary" href="../index.html?template=17#project">Start a Project with This Direction ↗</a>
+        <a class="btn-secondary" href="../index.html#collection">Explore Other Templates</a>
+      </div>
+    </section>
+
+    <section class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-num">99.99%</div>
+        <div class="metric-label">Enterprise Availability</div>
+        <div class="metric-detail">Fault-tolerant multi-region cloud architecture with automated failover & active SLA.</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">&lt; 35ms</div>
+        <div class="metric-label">Global Edge Latency</div>
+        <div class="metric-detail">Sub-millisecond routing across global edge nodes with intelligent caching layers.</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">Zero-Trust</div>
+        <div class="metric-label">Defense Architecture</div>
+        <div class="metric-detail">Cryptographic identity verification, automated SAST/DAST gates, and continuous audits.</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">100%</div>
+        <div class="metric-label">Type-Safe Integrity</div>
+        <div class="metric-detail">Strict TypeScript discipline, scalable microservices, and end-to-end integration rigor.</div>
+      </div>
+    </section>
+
+    <section class="studio-section">
+      <div class="section-eyebrow">Studio Concepts</div>
+      <h2 class="section-title">Engineered Foundations</h2>
+      <div class="products-grid">
+        <article class="product-card">
+          <div class="product-badge">Workflow Automation</div>
+          <h3>KraftFlow</h3>
+          <p>A studio concept for connecting routine tasks and turning repeatable work into dependable automated workflows.</p>
+        </article>
+        <article class="product-card">
+          <div class="product-badge">Security Workspace</div>
+          <h3>KraftGuard</h3>
+          <p>A studio concept for organizing security findings, prioritizing vulnerability fixes, and keeping remediation visible.</p>
+        </article>
+        <article class="product-card">
+          <div class="product-badge">Product Foundation</div>
+          <h3>KraftBase</h3>
+          <p>A studio concept for a reusable modern web application foundation with thoughtful interfaces and secure defaults.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="codekraft-bar">
+    <p>Like this signature dark cosmic studio design? <span>CodeKraft can customize and build it for your business.</span></p>
+    <a href="../index.html?template=17#project">Build This Website with CodeKraft ↗</a>
+  </footer>
+</body>
+</html>

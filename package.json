@@ -1,0 +1,14 @@
+{
+  "name": "codekraft-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CodeKraft — Digital Products & Website Concepts Showroom (codekraft.online)",
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build-showroom.mjs",
+    "build:all": "node tools/build-01-05.mjs && node tools/build-06-10.mjs && node tools/build-11-13.mjs && node tools/build-14-16.mjs && node tools/build-showroom.mjs",
+    "start": "npx serve ."
+  },
+  "author": "CodeKraft <codekraft.pvt@gmail.com>",
+  "license": "UNLICENSED"
+}

@@ -1,0 +1,226 @@
+{
+  "retrieved": "2026-09-16",
+  "repository": "https://github.com/google/fonts",
+  "fonts": [
+    {
+      "family": "Manrope",
+      "slug": "manrope",
+      "filename": "manrope-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/manrope/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\manrope-OFL.txt",
+      "sha256": "E01B637272E0CBDFB240184DD98EA5CC671556D9894DAE2668D92AB2C906787C",
+      "bytes": 4384
+    },
+    {
+      "family": "Cormorant Garamond",
+      "slug": "cormorantgaramond",
+      "filename": "cormorantgaramond-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/cormorantgaramond/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/cormorantgaramond/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\cormorantgaramond-OFL.txt",
+      "sha256": "60700D351CAC4650C51F3F9DB318D2A420F8B45052DBA2715EB5FEC41F0F6956",
+      "bytes": 4387
+    },
+    {
+      "family": "Italiana",
+      "slug": "italiana",
+      "filename": "italiana-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/italiana/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/italiana/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\italiana-OFL.txt",
+      "sha256": "486C4D5B9BAF0D0BA5546EF3C43FCFE22C062299AB6948045A43EFFFE4B0F74B",
+      "bytes": 4393
+    },
+    {
+      "family": "DM Sans",
+      "slug": "dmsans",
+      "filename": "dmsans-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/dmsans/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\dmsans-OFL.txt",
+      "sha256": "9AF36190332437F5ECD09974DE43C1F7C77A310A996CDD8CEB25628B458840E1",
+      "bytes": 4482
+    },
+    {
+      "family": "Inter",
+      "slug": "inter",
+      "filename": "inter-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/inter/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\inter-OFL.txt",
+      "sha256": "5B9321A4298CFEB6B34354164A1C3AFC3DB114569984C502B9B35D988FD58C57",
+      "bytes": 4377
+    },
+    {
+      "family": "Space Grotesk",
+      "slug": "spacegrotesk",
+      "filename": "spacegrotesk-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/spacegrotesk/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\spacegrotesk-OFL.txt",
+      "sha256": "564CE565C371C5E5BBF286006565A7C9AA55A9F56E7CA58D56E05D649DD61A72",
+      "bytes": 4495
+    },
+    {
+      "family": "Libre Baskerville",
+      "slug": "librebaskerville",
+      "filename": "librebaskerville-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/librebaskerville/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/librebaskerville/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\librebaskerville-OFL.txt",
+      "sha256": "3624EDDD4C8F8A908130A417AE7CD089C9DA69899C4E0CA1A5217D0A6FAE16FD",
+      "bytes": 4542
+    },
+    {
+      "family": "Syne",
+      "slug": "syne",
+      "filename": "syne-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/syne/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/syne/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\syne-OFL.txt",
+      "sha256": "CC43CDCE6F91C57989AF8459341C276655E34224E954FA69C2AD700831A742D8",
+      "bytes": 4402
+    },
+    {
+      "family": "Barlow Condensed",
+      "slug": "barlowcondensed",
+      "filename": "barlowcondensed-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/barlowcondensed/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\barlowcondensed-OFL.txt",
+      "sha256": "186D750EB496A4C17A76385F82BE6AEA2AC1CF2DE074A811D63786CF374EA73F",
+      "bytes": 4377
+    },
+    {
+      "family": "Archivo",
+      "slug": "archivo",
+      "filename": "archivo-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/archivo/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/archivo/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\archivo-OFL.txt",
+      "sha256": "108B4E57C9C796D3D38D0428CA7EE39DE47AD93187302718D9B2D8864B9B716B",
+      "bytes": 4388
+    },
+    {
+      "family": "Playfair Display",
+      "slug": "playfairdisplay",
+      "filename": "playfairdisplay-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/playfairdisplay/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/playfairdisplay/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\playfairdisplay-OFL.txt",
+      "sha256": "566BE814F8E96E93DFA16101331557EB6B5467E9E03F627C0910FE93CA12300E",
+      "bytes": 4449
+    },
+    {
+      "family": "Bodoni Moda",
+      "slug": "bodonimoda",
+      "filename": "bodonimoda-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/bodonimoda/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/bodonimoda/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\bodonimoda-OFL.txt",
+      "sha256": "931DFE2E0CD3C9443295F5C1D754B8A8403BF060DF50C1D5900267ADE83D0046",
+      "bytes": 4400
+    },
+    {
+      "family": "Plus Jakarta Sans",
+      "slug": "plusjakartasans",
+      "filename": "plusjakartasans-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/plusjakartasans/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/plusjakartasans/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\plusjakartasans-OFL.txt",
+      "sha256": "995C7199CAB65954F545996326755DAEE7B63CC6B42B06C13DA1F9502AB08A99",
+      "bytes": 4402
+    },
+    {
+      "family": "Lora",
+      "slug": "lora",
+      "filename": "lora-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/lora/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/lora/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\lora-OFL.txt",
+      "sha256": "1D9A970809AC804B582A6CE7F0EBC4E7FEFCBFD7FF6299CAD35EE656A21BE716",
+      "bytes": 4423
+    },
+    {
+      "family": "Fraunces",
+      "slug": "fraunces",
+      "filename": "fraunces-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/fraunces/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/fraunces/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\fraunces-OFL.txt",
+      "sha256": "BDF4C22802EAF804F998195871C6B8938AAC2AC14B2D78A8BD66A6F1ECED833B",
+      "bytes": 4391
+    },
+    {
+      "family": "IBM Plex Sans",
+      "slug": "ibmplexsans",
+      "filename": "ibmplexsans-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexsans/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/ibmplexsans/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\ibmplexsans-OFL.txt",
+      "sha256": "7E6B2818EDBD8F6A01AE80641CC8F16A51080D08FB4E532BE3A0B6F74ADB07DA",
+      "bytes": 4456
+    },
+    {
+      "family": "IBM Plex Serif",
+      "slug": "ibmplexserif",
+      "filename": "ibmplexserif-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexserif/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/ibmplexserif/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\ibmplexserif-OFL.txt",
+      "sha256": "7E6B2818EDBD8F6A01AE80641CC8F16A51080D08FB4E532BE3A0B6F74ADB07DA",
+      "bytes": 4456
+    },
+    {
+      "family": "Space Mono",
+      "slug": "spacemono",
+      "filename": "spacemono-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/spacemono/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/spacemono/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\spacemono-OFL.txt",
+      "sha256": "8E4EE42B2553E1E01504E61CB0D46D148CD8C9E5EACAA3622A7DF2D4F2955B9F",
+      "bytes": 4392
+    },
+    {
+      "family": "Sora",
+      "slug": "sora",
+      "filename": "sora-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/sora/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/sora/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\sora-OFL.txt",
+      "sha256": "BA0B9729C9428BA79A0459AB8EC575791B51509DBEC213E383D0316D37FEC299",
+      "bytes": 4385
+    },
+    {
+      "family": "IBM Plex Mono",
+      "slug": "ibmplexmono",
+      "filename": "ibmplexmono-OFL.txt",
+      "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexmono/OFL.txt",
+      "source_page": "https://github.com/google/fonts/blob/main/ofl/ibmplexmono/OFL.txt",
+      "license": "SIL Open Font License 1.1",
+      "path": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\codekraft-photos\\fonts-licenses\\ibmplexmono-OFL.txt",
+      "sha256": "7E6B2818EDBD8F6A01AE80641CC8F16A51080D08FB4E532BE3A0B6F74ADB07DA",
+      "bytes": 4456
+    }
+  ]
+}

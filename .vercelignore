@@ -1,0 +1,6 @@
+.git
+.qa
+.ctf-ironveil
+.openai
+tools/capture.mjs
+tools/download-fonts.mjs

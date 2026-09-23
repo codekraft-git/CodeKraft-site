@@ -1,0 +1,17 @@
+{
+  "name": "CodeKraft — Digital Products & Website Concepts",
+  "short_name": "CodeKraft",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#141415",
+  "theme_color": "#141415",
+  "description": "Explore 18 premium website and digital product directions created for modern businesses.",
+  "icons": [
+    {
+      "src": "/assets/icons/codekraft.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
