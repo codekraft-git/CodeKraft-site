@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 50" fill="none">
+  <g transform="translate(8, 7) scale(0.74)">
+    <path d="M24 4L7 11V22C7 33 14 43 24 46C34 43 41 33 41 22V11L24 4Z" fill="#0e2238" stroke="#90c7ff" stroke-width="2"/>
+    <path d="M18 24L23 29L30 18" stroke="#90c7ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="54" y="32" fill="#F0F6FC" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="19" font-weight="600" letter-spacing="-0.02em">Cybersecurity</text>
+</svg>

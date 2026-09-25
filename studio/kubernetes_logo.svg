@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 205 50" fill="none">
+  <g transform="translate(8, 7) scale(0.74)">
+    <circle cx="24" cy="24" r="22" fill="#326CE5" fill-opacity="0.15" stroke="#326CE5" stroke-width="1.5"/>
+    <path d="M24 6V14M24 34V42M8 16L15 20M33 28L40 32M8 32L15 28M33 20L40 16" stroke="#326CE5" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="24" cy="24" r="8" fill="#326CE5" stroke="#FFFFFF" stroke-width="2"/>
+  </g>
+  <text x="56" y="32" fill="#F0F6FC" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="19" font-weight="600" letter-spacing="-0.02em">Kubernetes</text>
+</svg>

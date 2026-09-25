@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" fill="none">
+  <g transform="translate(8, 7) scale(0.72)">
+    <path d="M24 4L42 13L24 22L6 13L24 4Z" fill="#D82C20"/>
+    <path d="M6 13V24L24 33V22L6 13Z" fill="#A3241A"/>
+    <path d="M42 13V24L24 33V22L42 13Z" fill="#C0281D"/>
+    <path d="M6 26V37L24 46V35L6 26Z" fill="#A3241A"/>
+    <path d="M42 26V37L24 46V35L42 26Z" fill="#C0281D"/>
+    <circle cx="24" cy="13" r="2.5" fill="#FFFFFF"/>
+  </g>
+  <text x="52" y="32" fill="#F0F6FC" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.02em">Redis</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 50" fill="none">
+  <rect x="6" y="7" width="36" height="36" rx="8" fill="#3178C6" stroke="#4a95ea" stroke-width="1"/>
+  <path d="M14 18h14m-7 0v15" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M36 21c-1-1.5-2.8-2-4.5-2-2.5 0-4.2 1.4-4.2 3.3 0 3.7 7.2 2.6 7.2 6.7 0 2.4-2 4-5 4-2.5 0-4.5-1-5.5-2.5" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+  <text x="56" y="32" fill="#F0F6FC" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.02em">TypeScript</text>
+</svg>

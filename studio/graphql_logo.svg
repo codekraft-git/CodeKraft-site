@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" fill="none">
+  <g transform="translate(8, 7) scale(0.74)">
+    <polygon points="24,4 43,14 43,36 24,46 5,36 5,14" fill="none" stroke="#E10098" stroke-width="1.8"/>
+    <polygon points="24,10 38,33 10,33" fill="none" stroke="#E10098" stroke-width="1.8"/>
+    <circle cx="24" cy="4" r="3" fill="#E10098"/>
+    <circle cx="43" cy="14" r="3" fill="#E10098"/>
+    <circle cx="43" cy="36" r="3" fill="#E10098"/>
+    <circle cx="24" cy="46" r="3" fill="#E10098"/>
+    <circle cx="5" cy="36" r="3" fill="#E10098"/>
+    <circle cx="5" cy="14" r="3" fill="#E10098"/>
+  </g>
+  <text x="54" y="32" fill="#F0F6FC" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="19" font-weight="600" letter-spacing="-0.02em">GraphQL</text>
+</svg>
