@@ -179,6 +179,21 @@ const iframeLoader = $('#iframe-loader');
 
 let currentViewport = 'desktop';
 
+function updateViewportScale() {
+  if (!modalViewportContainer) return;
+  const stage = $('#modal-preview-stage');
+  if (!stage) return;
+  const stageW = stage.clientWidth;
+  const stageH = stage.clientHeight;
+  if (stageW > 0 && stageH > 0) {
+    const scaleTablet = Math.min((stageW - 16) / 768, (stageH - 16) / 820, 1);
+    const scaleDesktop = Math.min((stageW - 16) / 1024, (stageH - 16) / 700, 1);
+    modalViewportContainer.style.setProperty('--tablet-scale', Math.max(0.2, scaleTablet).toFixed(3));
+    modalViewportContainer.style.setProperty('--desktop-scale', Math.max(0.2, scaleDesktop).toFixed(3));
+  }
+}
+window.addEventListener('resize', updateViewportScale);
+
 function setViewport(vp) {
   currentViewport = vp;
   $$('.viewport-btn').forEach(b => {
@@ -189,6 +204,7 @@ function setViewport(vp) {
   if (modalViewportContainer) {
     modalViewportContainer.className = `modal-viewport-container viewport-${vp}`;
   }
+  updateViewportScale();
 }
 
 function showIframeLoader() {
@@ -258,8 +274,8 @@ function openConceptModal(id = 1) {
   const idx = catalog.findIndex(t => t.id === Number(id));
   updateModalContent(idx !== -1 ? idx : 0);
   
-  // Set initial viewport based on screen size or user choice
-  if (window.innerWidth <= 640 && currentViewport === 'desktop') {
+  // Set initial viewport based on screen size: on screens <= 850px, default to native full-width mobile view
+  if (window.innerWidth <= 850) {
     setViewport('mobile');
   } else {
     setViewport(currentViewport);
@@ -268,7 +284,9 @@ function openConceptModal(id = 1) {
   if (modal) {
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
     document.body.classList.add('drawer-open');
+    setTimeout(updateViewportScale, 50);
   }
 }
 
@@ -276,11 +294,50 @@ function closeConceptModal() {
   if (!modal) return;
   modal.classList.remove('is-open');
   modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
   document.body.classList.remove('drawer-open');
   // Pause any audio/scripts inside preview iframe by resetting src
   if (modalPreviewFrame) {
     modalPreviewFrame.src = 'about:blank';
   }
+}
+
+// Touch swipe navigation and swipe-to-close for modal
+let modalTouchStartX = 0;
+let modalTouchStartY = 0;
+let modalTouchEndX = 0;
+let modalTouchEndY = 0;
+
+if (modal) {
+  modal.addEventListener('touchstart', e => {
+    if (!e.changedTouches || e.changedTouches.length === 0) return;
+    modalTouchStartX = e.changedTouches[0].screenX;
+    modalTouchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  modal.addEventListener('touchend', e => {
+    if (!e.changedTouches || e.changedTouches.length === 0) return;
+    modalTouchEndX = e.changedTouches[0].screenX;
+    modalTouchEndY = e.changedTouches[0].screenY;
+    const diffX = modalTouchEndX - modalTouchStartX;
+    const diffY = modalTouchEndY - modalTouchStartY;
+    
+    // Swipe down on titlebar/header to close modal
+    const target = e.target;
+    if (diffY > 70 && Math.abs(diffY) > Math.abs(diffX) * 1.5 && (target.closest('.window-titlebar') || target.closest('.modal-sidebar-header'))) {
+      closeConceptModal();
+      return;
+    }
+    
+    // Horizontal swipe threshold: 50px horizontal, distinctly greater than vertical
+    if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY) * 1.3) {
+      if (diffX < 0) {
+        updateModalContent(currentModalIndex + 1);
+      } else {
+        updateModalContent(currentModalIndex - 1);
+      }
+    }
+  }, { passive: true });
 }
 
 if (openCatalogWindowBtn) {
@@ -495,6 +552,9 @@ if (drawerSavedBtn) {
 $$('[data-filter]').forEach(button => button.addEventListener('click', () => {
   activeCategory = button.dataset.filter;
   $$('[data-filter]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+  try {
+    button.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  } catch (err) {}
   filter();
 }));
 
