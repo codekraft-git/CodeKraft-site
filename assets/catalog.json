@@ -160,5 +160,14 @@
     "description": "The official living tournament experience. Match center, interactive brackets, player spotlights and high-energy 3D visuals.",
     "category": "Creative",
     "color": "#eab308"
+  },
+  {
+    "id": 19,
+    "folder": "resort",
+    "brand": "KERALASTAY",
+    "industry": "Boutique Resort & Booking",
+    "description": "Verified boutique resorts, backwater sanctuaries and heritage villas across Kerala with real-time maps and direct bookings.",
+    "category": "Hospitality",
+    "color": "#1a3c34"
   }
 ]

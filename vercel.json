@@ -15,6 +15,12 @@
       "permanent": true
     }
   ],
+  "rewrites": [
+    {
+      "source": "/resort/((?!assets/|.*\\..*).*)",
+      "destination": "/resort/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

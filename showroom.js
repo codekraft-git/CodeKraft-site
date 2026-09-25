@@ -149,10 +149,10 @@ if (expandBtn) {
     const btnBadge = expandBtn.querySelector('.btn-expand-badge');
     if (isGalleryExpanded) {
       if (btnText) btnText.textContent = 'Show Less';
-      if (btnBadge) btnBadge.textContent = '18 Visible';
+      if (btnBadge) btnBadge.textContent = `${catalog.length} Visible`;
     } else {
       if (btnText) btnText.textContent = 'Explore All Concepts';
-      if (btnBadge) btnBadge.textContent = '+12 More';
+      if (btnBadge) btnBadge.textContent = `+${catalog.length - 6} More`;
       const collection = $('#collection');
       if (collection) collection.scrollIntoView({ behavior: 'smooth' });
     }
@@ -181,6 +181,7 @@ function updateModalContent(index) {
   if (!item) return;
 
   const titleEl = $('#modal-window-title'); if (titleEl) titleEl.textContent = item.brand;
+  const brandEl = $('#modal-brand'); if (brandEl) brandEl.textContent = item.brand;
   const imgEl = $('#modal-preview-img'); if (imgEl) imgEl.src = `assets/previews/${item.folder}.jpg`;
   const indexBadge = $('#modal-index-badge'); if (indexBadge) indexBadge.textContent = `${String(item.id).padStart(2,'0')} / ${catalog.length}`;
   const catBadge = $('#modal-category-badge'); if (catBadge) catBadge.textContent = item.category;

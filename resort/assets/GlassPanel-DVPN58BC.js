@@ -1,0 +1,1 @@
+import{d as e,m as t,t as n}from"./jsx-runtime-aSqcK8tc.js";import{i as r}from"./index-CnmMUzY0.js";var i=t(e(),1),a=n(),o={1:`glass-1`,2:`glass-2`,3:`glass-3`},s=(0,i.forwardRef)(({level:e=1,className:t,children:n,padding:i=!0,...s},c)=>(0,a.jsx)(`div`,{ref:c,className:r(`rounded-3xl`,i&&`p-6`,o[e],t),...s,children:n}));s.displayName=`GlassPanel`;export{s as t};

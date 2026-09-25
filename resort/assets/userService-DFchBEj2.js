@@ -1,0 +1,1 @@
+import{i as e,r as t}from"./jsx-runtime-aSqcK8tc.js";var n={getAll:()=>t().users,getById:e=>t().users.find(t=>t.id===e),getByRole:e=>t().users.filter(t=>t.role===e),getCount:()=>t().users.length,getCustomerCount:()=>t().users.filter(e=>e.role===`customer`).length,update:(t,n)=>e(`/users/${t}`,`PATCH`,n),updateStatus:(t,n)=>e(`/users/${t}`,`PATCH`,{status:n})};export{n as t};

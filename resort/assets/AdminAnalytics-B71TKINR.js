@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-aSqcK8tc.js";import{t}from"./OperationsDashboard-Cx2-k8FI.js";var n=e();function r(){return(0,n.jsx)(t,{analytics:!0})}export{r as default};
