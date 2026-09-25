@@ -597,7 +597,70 @@ if (proofNum) {
   countObserver.observe(proofNum);
 }
 
+// ==========================================================================
+// TextLoop Component (Motion Primitives 3D Variant Transitions)
+// Initial: { y: 20, rotateX: 90, opacity: 0, filter: blur(4px) }
+// Animate: { y: 0, rotateX: 0, opacity: 1, filter: blur(0px) }
+// Exit:    { y: -20, rotateX: -90, opacity: 0, filter: blur(4px) }
+// ==========================================================================
+function initAllTextLoops() {
+  const loops = document.querySelectorAll('.text-loop');
+  loops.forEach(loop => {
+    const items = Array.from(loop.querySelectorAll('.text-loop-item'));
+    if (items.length <= 1) return;
+
+    let currentIndex = items.findIndex(el => el.classList.contains('is-active'));
+    if (currentIndex < 0) {
+      currentIndex = 0;
+      items[0].classList.add('is-active');
+    }
+
+    function updateTrackWidth(index) {
+      const activeEl = items[index];
+      if (activeEl) {
+        const width = activeEl.offsetWidth || activeEl.getBoundingClientRect().width;
+        if (width > 0) {
+          loop.style.width = `${Math.ceil(width)}px`;
+        }
+      }
+    }
+
+    // Set initial width
+    updateTrackWidth(currentIndex);
+    window.addEventListener('resize', () => updateTrackWidth(currentIndex));
+
+    // Transition cycle every 2400ms
+    setInterval(() => {
+      if (document.hidden) return;
+
+      const prevIndex = currentIndex;
+      currentIndex = (currentIndex + 1) % items.length;
+
+      const prevItem = items[prevIndex];
+      const nextItem = items[currentIndex];
+
+      // Previous item exits with { y: -20, rotateX: -90, opacity: 0, filter: blur(4px) }
+      prevItem.classList.remove('is-active');
+      prevItem.classList.add('is-exit');
+
+      // Next item enters with { y: 0, rotateX: 0, opacity: 1, filter: blur(0px) }
+      nextItem.classList.remove('is-exit');
+      nextItem.classList.add('is-active');
+
+      // Update container width smoothly
+      updateTrackWidth(currentIndex);
+
+      // Clean up exit class after CSS transition completes
+      setTimeout(() => {
+        prevItem.classList.remove('is-exit');
+      }, 450);
+    }, 2400);
+  });
+}
+
 // Initial sync on load
 syncSelection();
 filter();
 syncWhatsAppLinks();
+initAllTextLoops();
+
