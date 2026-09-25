@@ -618,6 +618,10 @@ function initAllTextLoops() {
     function updateTrackWidth(index) {
       const activeEl = items[index];
       if (activeEl) {
+        const spacer = loop.querySelector('.text-loop-spacer');
+        if (spacer) {
+          spacer.textContent = activeEl.textContent.trim();
+        }
         const width = activeEl.offsetWidth || activeEl.getBoundingClientRect().width;
         if (width > 0) {
           loop.style.width = `${Math.ceil(width)}px`;
@@ -627,6 +631,9 @@ function initAllTextLoops() {
 
     // Set initial width
     updateTrackWidth(currentIndex);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => updateTrackWidth(currentIndex));
+    }
     window.addEventListener('resize', () => updateTrackWidth(currentIndex));
 
     // Transition cycle every 2400ms
