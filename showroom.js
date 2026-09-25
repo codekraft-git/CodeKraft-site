@@ -563,9 +563,19 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.05, rootMargin: '0px 0px 60px 0px' });
 
 $$('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
+
+// Reveal elements currently visible on load / fallback
+setTimeout(() => {
+  $$('.reveal-on-scroll:not(.is-revealed)').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight + 150) {
+      el.classList.add('is-revealed');
+    }
+  });
+}, 300);
 
 // Interactive 3D Hero Parallax (Desktop)
 const hero = $('.hero');
@@ -699,11 +709,26 @@ function initInfiniteSliders() {
   const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (isReducedMotion) return;
 
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth <= 800);
+
   wrappers.forEach(wrapper => {
     const track = wrapper.querySelector('.infinite-slider-track');
     if (!track) return;
 
-    // Transition from CSS fallback to ultra-smooth JS lerp engine
+    if (isTouchDevice) {
+      // Mobile / touch devices: Pure CSS GPU keyframe animation is compositor-driven.
+      // It never drops frames during touch gestures, doesn't halt during scroll, and uses zero JS timers.
+      track.style.animationPlayState = 'running';
+      wrapper.addEventListener('touchstart', () => {
+        track.style.animationPlayState = 'paused';
+      }, { passive: true });
+      wrapper.addEventListener('touchend', () => {
+        track.style.animationPlayState = 'running';
+      }, { passive: true });
+      return;
+    }
+
+    // Desktop pointer devices: Motion Primitives lerp hover speed engine
     track.style.animation = 'none';
 
     const baseSpeed = parseFloat(wrapper.dataset.speed || '0.85');
@@ -712,7 +737,7 @@ function initInfiniteSliders() {
 
     let currentSpeed = baseSpeed;
     let targetSpeed = baseSpeed;
-    let pos = isReverse ? -track.scrollWidth / 2 : 0;
+    let pos = 0;
     let animId = null;
 
     wrapper.addEventListener('mouseenter', () => { targetSpeed = hoverSpeed; });
@@ -741,7 +766,11 @@ function initInfiniteSliders() {
       animId = requestAnimationFrame(tick);
     }
 
-    animId = requestAnimationFrame(tick);
+    // Wait for initial reflow
+    requestAnimationFrame(() => {
+      pos = isReverse ? -track.scrollWidth / 2 : 0;
+      animId = requestAnimationFrame(tick);
+    });
   });
 }
 
