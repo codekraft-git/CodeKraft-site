@@ -3,13 +3,15 @@ const CONTACT = { email: 'codekraft.pvt@gmail.com', whatsapp: '+919400750981', p
 const catalog = JSON.parse(document.getElementById('catalog-data').textContent);
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const storageKey = 'codekraft-selection-v1';
+
 let saved = new Set();
 try {
   const values = JSON.parse(localStorage.getItem(storageKey) || '[]');
   if (Array.isArray(values)) saved = new Set(values.filter(id => catalog.some(t => t.id === id)));
 } catch {}
 
-let activeCategory = 'All', savedOnly = false, toastTimer;
+let activeCategory = 'All', savedOnly = false, isGalleryExpanded = false, toastTimer;
+let currentModalIndex = 0;
 
 function toast(message) {
   const t = $('#toast');
@@ -45,7 +47,12 @@ function syncSelection() {
   try { localStorage.setItem(storageKey, JSON.stringify([...saved])); } catch {}
   const count = String(saved.size);
   const headerCount = $('#saved-count'); if (headerCount) headerCount.textContent = count;
-  const dockCount = $('#dock-saved-count'); if (dockCount) dockCount.textContent = count;
+  const dockCount = $('#dock-saved-count');
+  if (dockCount) {
+    dockCount.textContent = count;
+    dockCount.classList.add('bump');
+    setTimeout(() => dockCount.classList.remove('bump'), 300);
+  }
   const drawerCount = $('#drawer-saved-count'); if (drawerCount) drawerCount.textContent = count;
 
   $$('[data-save]').forEach(button => {
@@ -55,30 +62,68 @@ function syncSelection() {
     if (item) button.setAttribute('aria-label', (isSaved ? 'Remove ' : 'Save ') + item.brand + (isSaved ? ' from selection' : ''));
   });
 
+  const modalSaveBtn = $('#modal-save-btn');
+  if (modalSaveBtn) {
+    const curItem = catalog[currentModalIndex];
+    if (curItem) {
+      const isSaved = saved.has(curItem.id);
+      modalSaveBtn.setAttribute('aria-pressed', String(isSaved));
+      const modalSaveText = $('#modal-save-text');
+      if (modalSaveText) modalSaveText.textContent = isSaved ? 'Saved in Favorites' : 'Save to Favorites';
+    }
+  }
+
   const summary = $('#selection-summary');
-  if (summary) summary.textContent = saved.size ? 'Also in your selection: ' + catalog.filter(t => saved.has(t.id)).map(t => t.brand).join(', ') : '';
+  if (summary) summary.textContent = saved.size ? 'Saved in your selection: ' + catalog.filter(t => saved.has(t.id)).map(t => t.brand).join(', ') : '';
   syncWhatsAppLinks();
 }
 
 function filter() {
   const searchInput = $('#template-search');
   const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
-  let count = 0;
-  $$('.template-card').forEach(card => {
-    const show = (activeCategory === 'All' || card.dataset.category === activeCategory) &&
+  const isFiltering = activeCategory !== 'All' || savedOnly || !!query;
+  const gallery = $('#gallery');
+  const expandBar = $('#gallery-expand-bar');
+
+  let visibleCount = 0;
+  $$('.template-card').forEach((card, index) => {
+    const matchesFilter = (activeCategory === 'All' || card.dataset.category === activeCategory) &&
       (!savedOnly || saved.has(Number(card.dataset.id))) &&
       (!query || card.dataset.search.includes(query));
-    card.hidden = !show;
-    if (show) count++;
+
+    if (!matchesFilter) {
+      card.hidden = true;
+    } else {
+      card.hidden = false;
+      visibleCount++;
+    }
   });
-  const gallery = $('#gallery');
-  if (gallery) gallery.classList.toggle('filtered', activeCategory !== 'All' || savedOnly || !!query);
+
+  // Handle collapsed / expanded state
+  if (gallery) {
+    if (isFiltering) {
+      gallery.classList.remove('is-collapsed');
+      if (expandBar) expandBar.hidden = true;
+    } else {
+      gallery.classList.toggle('is-collapsed', !isGalleryExpanded);
+      if (expandBar) expandBar.hidden = false;
+    }
+  }
+
   const resultCount = $('#result-count');
-  if (resultCount) resultCount.textContent = count + ' ' + (count === 1 ? 'concept' : 'concepts') + ' to explore';
+  if (resultCount) {
+    const shown = isFiltering || isGalleryExpanded ? visibleCount : Math.min(6, visibleCount);
+    resultCount.textContent = `${shown} of ${visibleCount} concepts`;
+  }
+
   const emptyState = $('#empty-state');
-  if (emptyState) emptyState.hidden = count !== 0;
+  if (emptyState) emptyState.hidden = visibleCount !== 0;
+
   const labelText = $('#gallery-label-text');
-  if (labelText) labelText.textContent = savedOnly ? 'YOUR SELECTION' : activeCategory === 'All' && !query ? 'FEATURED DESIGNS' : 'EXPLORE THE COLLECTION';
+  if (labelText) {
+    labelText.textContent = savedOnly ? 'YOUR SELECTION' : isFiltering ? 'FILTERED CONCEPTS' : 'EXPLORE CONCEPTS';
+  }
+
   const selNav = $('#selection-nav');
   if (selNav) selNav.setAttribute('aria-pressed', String(savedOnly));
 }
@@ -92,6 +137,198 @@ function toggleSavedView() {
   filter();
   const collection = $('#collection');
   if (collection) collection.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+}
+
+// Expand / Collapse Gallery Logic
+const expandBtn = $('#btn-expand-gallery');
+if (expandBtn) {
+  expandBtn.addEventListener('click', () => {
+    isGalleryExpanded = !isGalleryExpanded;
+    expandBtn.setAttribute('aria-expanded', String(isGalleryExpanded));
+    const btnText = expandBtn.querySelector('.btn-expand-text');
+    const btnBadge = expandBtn.querySelector('.btn-expand-badge');
+    if (isGalleryExpanded) {
+      if (btnText) btnText.textContent = 'Show Less';
+      if (btnBadge) btnBadge.textContent = '18 Visible';
+    } else {
+      if (btnText) btnText.textContent = 'Explore All Concepts';
+      if (btnBadge) btnBadge.textContent = '+12 More';
+      const collection = $('#collection');
+      if (collection) collection.scrollIntoView({ behavior: 'smooth' });
+    }
+    filter();
+  });
+}
+
+// Concept Browser Window (Modal)
+const modal = $('#concept-modal');
+const modalBackdrop = $('#modal-backdrop');
+const modalCloseBtn = $('#modal-close-btn');
+const modalTrafficClose = $('#modal-traffic-close');
+const modalTrafficMax = $('#modal-traffic-max');
+const modalPrevBtn = $('#modal-prev-btn');
+const modalNextBtn = $('#modal-next-btn');
+const modalBuildBtn = $('#modal-build-btn');
+const modalSaveBtn = $('#modal-save-btn');
+const openCatalogWindowBtn = $('#btn-open-catalog-window');
+const modalViewportContainer = $('#modal-viewport-container');
+
+function updateModalContent(index) {
+  if (index < 0) index = catalog.length - 1;
+  if (index >= catalog.length) index = 0;
+  currentModalIndex = index;
+  const item = catalog[index];
+  if (!item) return;
+
+  const titleEl = $('#modal-window-title'); if (titleEl) titleEl.textContent = item.brand;
+  const imgEl = $('#modal-preview-img'); if (imgEl) imgEl.src = `assets/previews/${item.folder}.jpg`;
+  const indexBadge = $('#modal-index-badge'); if (indexBadge) indexBadge.textContent = `${String(item.id).padStart(2,'0')} / ${catalog.length}`;
+  const catBadge = $('#modal-category-badge'); if (catBadge) catBadge.textContent = item.category;
+  const indEl = $('#modal-industry'); if (indEl) indEl.textContent = item.industry;
+  const descEl = $('#modal-desc'); if (descEl) descEl.textContent = item.description;
+  const mobileCounter = $('#modal-counter-mobile'); if (mobileCounter) mobileCounter.textContent = `${String(item.id).padStart(2,'0')} / ${catalog.length}`;
+  const liveBtn = $('#modal-open-live-btn'); if (liveBtn) liveBtn.href = `${item.folder}/index.html`;
+
+  // Update dots
+  const dotsContainer = $('#modal-dots-indicator');
+  if (dotsContainer) {
+    dotsContainer.replaceChildren();
+    catalog.forEach((t, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'modal-dot' + (i === index ? ' active' : '');
+      dot.setAttribute('aria-label', `View concept ${t.brand}`);
+      dot.addEventListener('click', () => updateModalContent(i));
+      dotsContainer.append(dot);
+    });
+  }
+
+  // Update save button in modal
+  if (modalSaveBtn) {
+    const isSaved = saved.has(item.id);
+    modalSaveBtn.setAttribute('aria-pressed', String(isSaved));
+    const modalSaveText = $('#modal-save-text');
+    if (modalSaveText) modalSaveText.textContent = isSaved ? 'Saved in Favorites' : 'Save to Favorites';
+  }
+}
+
+function openConceptModal(id = 1) {
+  const idx = catalog.findIndex(t => t.id === Number(id));
+  updateModalContent(idx !== -1 ? idx : 0);
+  if (modal) {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('drawer-open');
+  }
+}
+
+function closeConceptModal() {
+  if (!modal) return;
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('drawer-open');
+}
+
+if (openCatalogWindowBtn) {
+  openCatalogWindowBtn.addEventListener('click', () => openConceptModal(1));
+}
+if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeConceptModal);
+if (modalTrafficClose) modalTrafficClose.addEventListener('click', closeConceptModal);
+if (modalBackdrop) modalBackdrop.addEventListener('click', closeConceptModal);
+
+if (modalTrafficMax) {
+  modalTrafficMax.addEventListener('click', () => {
+    const w = $('.modal-window');
+    if (w) w.classList.toggle('is-fullscreen');
+  });
+}
+
+if (modalPrevBtn) modalPrevBtn.addEventListener('click', () => updateModalContent(currentModalIndex - 1));
+if (modalNextBtn) modalNextBtn.addEventListener('click', () => updateModalContent(currentModalIndex + 1));
+
+// Viewport switcher in modal
+$$('.viewport-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    $$('.viewport-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const vp = btn.dataset.viewport;
+    if (modalViewportContainer) {
+      modalViewportContainer.className = `modal-viewport-container viewport-${vp}`;
+    }
+  });
+});
+
+// Modal Build CTA
+if (modalBuildBtn) {
+  modalBuildBtn.addEventListener('click', () => {
+    const item = catalog[currentModalIndex];
+    if (item) {
+      closeConceptModal();
+      selectConceptForBuild(item.id);
+    }
+  });
+}
+
+// Modal Save CTA
+if (modalSaveBtn) {
+  modalSaveBtn.addEventListener('click', () => {
+    const item = catalog[currentModalIndex];
+    if (!item) return;
+    if (saved.has(item.id)) {
+      saved.delete(item.id);
+      toast('Removed from favorites');
+    } else {
+      saved.add(item.id);
+      toast('Saved to favorites');
+    }
+    syncSelection();
+    filter();
+  });
+}
+
+// Quick View Buttons on Cards
+document.addEventListener('click', e => {
+  const qBtn = e.target.closest('.quick-view-btn');
+  if (qBtn) {
+    e.preventDefault();
+    openConceptModal(qBtn.dataset.modalId);
+  }
+});
+
+// Select Concept For Project Form (Replaces Design Direction dropdown)
+function selectConceptForBuild(id) {
+  const item = catalog.find(t => t.id === Number(id));
+  if (!item) return;
+  const pt = $('#project-template');
+  if (pt) pt.value = item.id;
+
+  const chip = $('#selected-concept-chip');
+  if (chip) {
+    const nameEl = $('#chip-name'); if (nameEl) nameEl.textContent = item.brand;
+    const indEl = $('#chip-industry'); if (indEl) indEl.textContent = `(${item.industry})`;
+    chip.hidden = false;
+  }
+  syncWhatsAppLinks();
+
+  const projectSection = $('#project');
+  if (projectSection) {
+    projectSection.scrollIntoView({ behavior: 'smooth' });
+    const form = $('#project-form');
+    if (form) {
+      form.classList.add('highlight-pulse');
+      setTimeout(() => form.classList.remove('highlight-pulse'), 1400);
+    }
+  }
+}
+
+const chipClearBtn = $('#chip-clear-btn');
+if (chipClearBtn) {
+  chipClearBtn.addEventListener('click', () => {
+    const pt = $('#project-template');
+    if (pt) pt.value = '';
+    const chip = $('#selected-concept-chip');
+    if (chip) chip.hidden = true;
+    syncWhatsAppLinks();
+  });
 }
 
 // Drawer Interactions
@@ -133,9 +370,18 @@ if (menuToggle) {
 }
 if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
 if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
+
+// Global Keyboard Navigation
 window.addEventListener('keydown', e => {
+  if (modal && modal.classList.contains('is-open')) {
+    if (e.key === 'Escape') closeConceptModal();
+    if (e.key === 'ArrowLeft') updateModalContent(currentModalIndex - 1);
+    if (e.key === 'ArrowRight') updateModalContent(currentModalIndex + 1);
+    return;
+  }
   if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) closeDrawer();
 });
+
 $$('.drawer-link').forEach(link => {
   link.addEventListener('click', closeDrawer);
 });
@@ -162,8 +408,13 @@ $$('[data-filter]').forEach(button => button.addEventListener('click', () => {
 const searchEl = $('#template-search');
 if (searchEl) searchEl.addEventListener('input', filter);
 
-$$('[data-save]').forEach(button => button.addEventListener('click', () => {
+// Favorite Heart button with pop micro-animation
+$$('[data-save]').forEach(button => button.addEventListener('click', (e) => {
+  e.stopPropagation();
   const id = Number(button.dataset.save);
+  button.classList.add('pop');
+  setTimeout(() => button.classList.remove('pop'), 400);
+
   if (saved.has(id)) {
     saved.delete(id);
     toast('Removed from your selection');
@@ -186,57 +437,42 @@ if (resetBtn) {
   });
 }
 
-$$('[data-build]').forEach(a => a.addEventListener('click', () => {
-  const pt = $('#project-template');
-  if (pt) pt.value = a.dataset.build;
-  syncWhatsAppLinks();
-}));
+// "Build this website +" button on cards
+document.addEventListener('click', e => {
+  const buildBtn = e.target.closest('[data-build]');
+  if (buildBtn) {
+    e.preventDefault();
+    selectConceptForBuild(buildBtn.dataset.build);
+  }
+});
 
-const pt = $('#project-template');
-if (pt) pt.addEventListener('change', syncWhatsAppLinks);
-
-const selected = new URLSearchParams(location.search).get('template');
-if (catalog.some(t => String(t.id) === selected)) {
-  if (pt) pt.value = selected;
-  syncWhatsAppLinks();
-}
-
+// Project Form Submission Handler
 let lastBrief = '', briefUrl = '';
-const talkLink = $('#talk-link');
-if (talkLink) {
-  if (CONTACT.whatsapp) {
-    talkLink.href = 'https://wa.me/' + CONTACT.whatsapp.replace(/\D/g, '') + '?text=' + encodeURIComponent(getWhatsAppMessage());
-  } else if (CONTACT.email) {
-    talkLink.href = 'mailto:' + CONTACT.email;
-  }
-}
-
-if ($('#project-note')) {
-  if (CONTACT.whatsapp) {
-    $('#project-note').textContent = 'Prepare your brief and continue the conversation with CodeKraft on WhatsApp.';
-  } else if (CONTACT.email) {
-    $('#project-note').textContent = 'Prepare your brief and open your email app to send it to CodeKraft.';
-  }
-}
-
 const projectForm = $('#project-form');
 if (projectForm) {
   projectForm.addEventListener('submit', e => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const direction = catalog.find(t => String(t.id) === data.get('template'));
-    lastBrief = [
+    const templateId = data.get('template') || ($('#project-template') ? $('#project-template').value : '');
+    const direction = catalog.find(t => String(t.id) === String(templateId));
+
+    const briefLines = [
       'CODEKRAFT — PROJECT BRIEF',
       '',
       'Name: ' + data.get('name'),
       'Email: ' + data.get('email'),
-      'Business: ' + data.get('business'),
-      'Design direction: ' + (direction ? direction.brand + ' (' + direction.industry + ')' : 'Help me find my direction'),
-      'Saved concepts: ' + catalog.filter(t => saved.has(t.id)).map(t => t.brand).join(', '),
-      '',
-      'Project goals:',
-      data.get('goals')
-    ].join('\n');
+      'Business: ' + data.get('business')
+    ];
+
+    if (direction) {
+      briefLines.push('Chosen direction: ' + direction.brand + ' (' + direction.industry + ')');
+    }
+    if (saved.size > 0) {
+      briefLines.push('Saved concepts: ' + catalog.filter(t => saved.has(t.id)).map(t => t.brand).join(', '));
+    }
+    briefLines.push('', 'Project goals:', data.get('goals'));
+
+    lastBrief = briefLines.join('\n');
 
     if (briefUrl) URL.revokeObjectURL(briefUrl);
     briefUrl = URL.createObjectURL(new Blob([lastBrief], { type: 'text/plain;charset=utf-8' }));
@@ -244,7 +480,7 @@ if (projectForm) {
     result.replaceChildren();
 
     const message = document.createElement('p');
-    message.textContent = CONTACT.email || CONTACT.whatsapp ? 'Your project brief is ready. Choose how to share it.' : 'Your project brief is ready to save and share. Nothing has been sent.';
+    message.textContent = 'Your project brief is ready. Choose how to share it with CodeKraft:';
     result.append(message);
 
     const download = document.createElement('a');
@@ -293,6 +529,72 @@ if (projectForm) {
     }
     result.focus();
   });
+}
+
+// Interactive Animations: Scroll Reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-revealed');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+$$('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
+
+// Interactive 3D Hero Parallax (Desktop)
+const hero = $('.hero');
+const heroComp = $('.hero-composition');
+if (hero && heroComp && window.matchMedia('(min-width: 900px)').matches) {
+  hero.addEventListener('mousemove', e => {
+    const rect = hero.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    heroComp.style.transform = `perspective(1200px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
+  });
+  hero.addEventListener('mouseleave', () => {
+    heroComp.style.transform = 'perspective(1200px) rotateY(0deg) rotateX(0deg)';
+  });
+}
+
+// Spotlight Glow on Mousemove for Cards
+document.addEventListener('mousemove', e => {
+  const card = e.target.closest('.template-card, .service-card');
+  if (!card) return;
+  const rect = card.getBoundingClientRect();
+  card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+  card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+});
+
+// Animated Proof Number Counter in Hero
+const proofNum = $('.proof-number');
+if (proofNum) {
+  let counted = false;
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !counted) {
+        counted = true;
+        const target = 18;
+        const duration = 1200;
+        let startTime = null;
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          const progress = Math.min((timestamp - startTime) / duration, 1);
+          const easeOut = 1 - Math.pow(1 - progress, 3);
+          proofNum.textContent = Math.floor(easeOut * target);
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            proofNum.textContent = target;
+          }
+        }
+        requestAnimationFrame(step);
+        countObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  countObserver.observe(proofNum);
 }
 
 // Initial sync on load
