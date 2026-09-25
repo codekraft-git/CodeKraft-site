@@ -165,13 +165,45 @@ const modal = $('#concept-modal');
 const modalBackdrop = $('#modal-backdrop');
 const modalCloseBtn = $('#modal-close-btn');
 const modalTrafficClose = $('#modal-traffic-close');
+const modalTrafficMin = $('#modal-traffic-min');
 const modalTrafficMax = $('#modal-traffic-max');
 const modalPrevBtn = $('#modal-prev-btn');
 const modalNextBtn = $('#modal-next-btn');
 const modalBuildBtn = $('#modal-build-btn');
 const modalSaveBtn = $('#modal-save-btn');
+const modalReloadBtn = $('#modal-reload-btn');
 const openCatalogWindowBtn = $('#btn-open-catalog-window');
 const modalViewportContainer = $('#modal-viewport-container');
+const modalPreviewFrame = $('#modal-preview-frame');
+const iframeLoader = $('#iframe-loader');
+
+let currentViewport = 'desktop';
+
+function setViewport(vp) {
+  currentViewport = vp;
+  $$('.viewport-btn').forEach(b => {
+    const isActive = b.dataset.viewport === vp;
+    b.classList.toggle('active', isActive);
+    b.setAttribute('aria-selected', String(isActive));
+  });
+  if (modalViewportContainer) {
+    modalViewportContainer.className = `modal-viewport-container viewport-${vp}`;
+  }
+}
+
+function showIframeLoader() {
+  if (iframeLoader) iframeLoader.classList.remove('is-hidden');
+}
+
+function hideIframeLoader() {
+  if (iframeLoader) iframeLoader.classList.add('is-hidden');
+}
+
+if (modalPreviewFrame) {
+  modalPreviewFrame.addEventListener('load', () => {
+    hideIframeLoader();
+  });
+}
 
 function updateModalContent(index) {
   if (index < 0) index = catalog.length - 1;
@@ -182,13 +214,23 @@ function updateModalContent(index) {
 
   const titleEl = $('#modal-window-title'); if (titleEl) titleEl.textContent = item.brand;
   const brandEl = $('#modal-brand'); if (brandEl) brandEl.textContent = item.brand;
-  const imgEl = $('#modal-preview-img'); if (imgEl) imgEl.src = `assets/previews/${item.folder}.jpg`;
   const indexBadge = $('#modal-index-badge'); if (indexBadge) indexBadge.textContent = `${String(item.id).padStart(2,'0')} / ${catalog.length}`;
   const catBadge = $('#modal-category-badge'); if (catBadge) catBadge.textContent = item.category;
   const indEl = $('#modal-industry'); if (indEl) indEl.textContent = item.industry;
   const descEl = $('#modal-desc'); if (descEl) descEl.textContent = item.description;
   const mobileCounter = $('#modal-counter-mobile'); if (mobileCounter) mobileCounter.textContent = `${String(item.id).padStart(2,'0')} / ${catalog.length}`;
   const liveBtn = $('#modal-open-live-btn'); if (liveBtn) liveBtn.href = `${item.folder}/`;
+
+  // Update live preview iframe so it loads the real, scrollable website
+  if (modalPreviewFrame) {
+    const targetUrl = `${item.folder}/`;
+    const curSrc = modalPreviewFrame.getAttribute('src');
+    if (!curSrc || !curSrc.startsWith(targetUrl)) {
+      showIframeLoader();
+      modalPreviewFrame.src = targetUrl;
+      setTimeout(hideIframeLoader, 2500);
+    }
+  }
 
   // Update dots
   const dotsContainer = $('#modal-dots-indicator');
@@ -215,6 +257,14 @@ function updateModalContent(index) {
 function openConceptModal(id = 1) {
   const idx = catalog.findIndex(t => t.id === Number(id));
   updateModalContent(idx !== -1 ? idx : 0);
+  
+  // Set initial viewport based on screen size or user choice
+  if (window.innerWidth <= 640 && currentViewport === 'desktop') {
+    setViewport('mobile');
+  } else {
+    setViewport(currentViewport);
+  }
+
   if (modal) {
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
@@ -227,6 +277,10 @@ function closeConceptModal() {
   modal.classList.remove('is-open');
   modal.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('drawer-open');
+  // Pause any audio/scripts inside preview iframe by resetting src
+  if (modalPreviewFrame) {
+    modalPreviewFrame.src = 'about:blank';
+  }
 }
 
 if (openCatalogWindowBtn) {
@@ -236,10 +290,29 @@ if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeConceptModal);
 if (modalTrafficClose) modalTrafficClose.addEventListener('click', closeConceptModal);
 if (modalBackdrop) modalBackdrop.addEventListener('click', closeConceptModal);
 
+if (modalTrafficMin) {
+  modalTrafficMin.addEventListener('click', () => {
+    setViewport('desktop');
+    const w = $('.modal-window');
+    if (w) w.classList.remove('is-fullscreen');
+  });
+}
+
 if (modalTrafficMax) {
   modalTrafficMax.addEventListener('click', () => {
     const w = $('.modal-window');
     if (w) w.classList.toggle('is-fullscreen');
+  });
+}
+
+if (modalReloadBtn) {
+  modalReloadBtn.addEventListener('click', () => {
+    const item = catalog[currentModalIndex];
+    if (item && modalPreviewFrame) {
+      showIframeLoader();
+      modalPreviewFrame.src = `${item.folder}/?t=${Date.now()}`;
+      setTimeout(hideIframeLoader, 2500);
+    }
   });
 }
 
@@ -249,12 +322,8 @@ if (modalNextBtn) modalNextBtn.addEventListener('click', () => updateModalConten
 // Viewport switcher in modal
 $$('.viewport-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    $$('.viewport-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
     const vp = btn.dataset.viewport;
-    if (modalViewportContainer) {
-      modalViewportContainer.className = `modal-viewport-container viewport-${vp}`;
-    }
+    if (vp) setViewport(vp);
   });
 });
 
