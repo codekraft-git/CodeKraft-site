@@ -522,41 +522,267 @@ textarea{resize:vertical;min-height:110px}
   body.modal-open,body.drawer-open{overflow:hidden!important}
   body.modal-open .mobile-action-dock,body.drawer-open .mobile-action-dock{display:none!important;visibility:hidden!important;pointer-events:none!important}
   
-  .modal-window{max-height:96vh;border-radius:12px}
-  .modal-body{grid-template-columns:1fr;overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column}
-  .modal-preview-stage{height:52vh;min-height:290px;max-height:58vh;padding:0;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
-  .modal-sidebar{border-left:0;border-top:1px solid rgba(255,255,255,.1);padding:20px 16px calc(24px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;background:#17171a}
-  .modal-sidebar-header{margin-bottom:0}
-  .modal-sidebar-actions{order:2;margin-top:6px;gap:10px}
-  .modal-features-list{order:3;margin-top:14px;margin-bottom:0;padding-top:16px}
-  .btn-modal-action{min-height:48px;font-size:13px}
-  .window-traffic-lights{display:none}
-  .window-title{display:flex!important;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
-  .window-title-host,.window-title-sep{display:none}
-  .window-controls{gap:6px}
-  .viewport-switcher{padding:2px;gap:2px}
-  .viewport-btn{padding:5px 8px;font-size:10.5px}
+  /* Modal Overlay: full screen, completely unscrollable */
+  .concept-modal{overflow:hidden!important;padding:0!important}
+  .concept-modal.is-open{padding:0!important;display:flex!important;align-items:stretch!important;justify-content:stretch!important}
   
-  /* Mobile View on Mobile screens: fills 100% cleanly */
-  .modal-viewport-container.viewport-mobile{width:100%!important;max-width:100%!important;height:100%!important;min-height:0!important;border:none!important;border-radius:0!important;box-shadow:none!important;margin:0!important;transform:none!important}
-  .modal-viewport-container.viewport-mobile .device-bezel-top,.modal-viewport-container.viewport-mobile .device-bezel-bottom{display:none!important}
+  /* Modal Window: fills 100% of viewport, ZERO window scrollbars */
+  .modal-window{
+    width:100vw!important;
+    max-width:100vw!important;
+    height:100vh!important;
+    height:100dvh!important;
+    max-height:100dvh!important;
+    border-radius:0!important;
+    border:none!important;
+    display:flex!important;
+    flex-direction:column!important;
+    overflow:hidden!important;
+    box-shadow:none!important;
+  }
+  
+  /* Completely eliminate all outer scrollbars */
+  .concept-modal, .modal-window, .modal-body, .modal-preview-stage, .modal-sidebar{
+    scrollbar-width:none!important;
+    -ms-overflow-style:none!important;
+  }
+  .concept-modal::-webkit-scrollbar, .modal-window::-webkit-scrollbar, .modal-body::-webkit-scrollbar, .modal-preview-stage::-webkit-scrollbar, .modal-sidebar::-webkit-scrollbar{
+    display:none!important;width:0!important;height:0!important;
+  }
+  
+  /* App-style Top Titlebar */
+  .window-titlebar{
+    height:46px!important;
+    min-height:calc(46px + env(safe-area-inset-top,0px))!important;
+    padding:env(safe-area-inset-top,0px) 12px 0!important;
+    background:#161619!important;
+    border-bottom:1px solid rgba(255,255,255,.08)!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    flex-shrink:0!important;
+    user-select:none!important;
+    gap:8px!important;
+    z-index:20;
+  }
+  .window-traffic-lights{display:none!important}
+  .window-title{
+    display:flex!important;
+    align-items:center!important;
+    gap:6px!important;
+    min-width:0!important;
+    max-width:160px!important;
+    font-size:12px!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+  }
+  .window-title-host,.window-title-sep{display:none!important}
+  .window-title-concept{font-size:12px!important;font-weight:700!important;color:var(--accent)!important}
+  .window-controls{gap:6px!important}
+  .viewport-switcher{padding:2px!important;gap:2px!important;background:rgba(255,255,255,.06)!important}
+  .viewport-btn{padding:5px 8px!important;font-size:10.5px!important}
+  .vp-label{display:none!important}
+  .modal-reload-btn,.modal-close-btn{width:32px!important;height:32px!important;border-radius:6px!important}
+  
+  /* Modal Body: Flex column, zero overflow, no scrollbars */
+  .modal-body{
+    flex:1 1 auto!important;
+    display:flex!important;
+    flex-direction:column!important;
+    overflow:hidden!important;
+    min-height:0!important;
+    position:relative!important;
+    grid-template-columns:none!important;
+  }
+  
+  /* Stage: Fills 100% of available vertical space between top and bottom chrome */
+  .modal-preview-stage{
+    flex:1 1 auto!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    width:100%!important;
+    padding:0!important;
+    margin:0!important;
+    overflow:hidden!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    background:#0b0c0f!important;
+    position:relative!important;
+  }
+  
+  /* Mobile Viewport: 100% full screen inside stage, clean & bezel-free */
+  .modal-viewport-container.viewport-mobile{
+    width:100%!important;
+    max-width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    border:none!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    margin:0!important;
+    transform:none!important;
+  }
+  .modal-viewport-container.viewport-mobile .device-bezel-top,
+  .modal-viewport-container.viewport-mobile .device-bezel-bottom{display:none!important}
   .modal-viewport-container.viewport-mobile .iframe-wrapper{border-radius:0!important}
   
-  /* Tablet View on Mobile: scales down to fit stage */
-  .modal-viewport-container.viewport-tablet{width:768px!important;max-width:768px!important;height:820px!important;min-height:600px!important;border-width:6px!important;border-radius:16px!important;transform-origin:center center;transform:scale(var(--tablet-scale,0.44));margin:0 auto;flex-shrink:0}
+  /* Tablet Viewport: scaled to fit */
+  .modal-viewport-container.viewport-tablet{
+    width:768px!important;
+    max-width:768px!important;
+    height:820px!important;
+    min-height:500px!important;
+    border-width:6px!important;
+    border-radius:16px!important;
+    transform-origin:center center!important;
+    transform:scale(var(--tablet-scale,0.42))!important;
+    margin:0 auto!important;
+    flex-shrink:0!important;
+  }
   
-  /* Desktop View on Mobile: scales down to fit stage */
-  .modal-viewport-container.viewport-desktop{width:1024px!important;min-width:1024px!important;max-width:1024px!important;height:700px!important;min-height:500px!important;border-radius:8px!important;transform-origin:center center;transform:scale(var(--desktop-scale,0.34));margin:0 auto;flex-shrink:0}
-}
-
-@media(max-width:640px){
-  .vp-label{display:none}
-  .viewport-switcher{padding:3px;gap:3px}
-  .viewport-btn{width:34px;height:34px;padding:0;display:inline-flex;align-items:center;justify-content:center}
-  .viewport-btn svg{width:16px;height:16px}
-  .modal-reload-btn,.modal-close-btn{width:36px;height:36px}
-  .window-title{max-width:130px;font-size:11.5px}
-  .modal-preview-stage{height:50vh;min-height:280px}
+  /* Desktop Viewport: scaled to fit */
+  .modal-viewport-container.viewport-desktop{
+    width:1024px!important;
+    min-width:1024px!important;
+    max-width:1024px!important;
+    height:700px!important;
+    min-height:480px!important;
+    border-radius:8px!important;
+    transform-origin:center center!important;
+    transform:scale(var(--desktop-scale,0.32))!important;
+    margin:0 auto!important;
+    flex-shrink:0!important;
+  }
+  
+  /* Compact Bottom Action Bar: Transforms sidebar into an app control strip */
+  .modal-sidebar{
+    flex-shrink:0!important;
+    border-left:0!important;
+    border-top:1px solid rgba(255,255,255,.08)!important;
+    padding:8px 12px 6px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    background:#161619!important;
+    gap:6px!important;
+    overflow:hidden!important;
+    box-shadow:0 -6px 20px rgba(0,0,0,.45)!important;
+    z-index:10;
+  }
+  
+  .modal-sidebar-header{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    margin:0!important;
+    gap:8px!important;
+    padding:0!important;
+  }
+  .modal-badge-row{display:none!important}
+  .modal-brand{display:none!important}
+  .modal-industry{
+    font-size:9.5px!important;
+    letter-spacing:.1em!important;
+    margin:0!important;
+    white-space:nowrap!important;
+    flex-shrink:0!important;
+    color:var(--accent)!important;
+    font-weight:700!important;
+  }
+  .modal-desc{
+    font-size:11px!important;
+    line-height:1.25!important;
+    margin:0!important;
+    color:#9e9aa8!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    max-width:100%!important;
+  }
+  
+  /* Hide the 4 generic bullet points completely on mobile */
+  .modal-features-list{display:none!important}
+  
+  /* Action buttons: Single horizontal row! */
+  .modal-sidebar-actions{
+    display:flex!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    gap:6px!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  .btn-modal-primary{
+    flex:2!important;
+    min-height:40px!important;
+    padding:7px 12px!important;
+    font-size:11.5px!important;
+    font-weight:700!important;
+    border-radius:8px!important;
+    justify-content:center!important;
+    white-space:nowrap!important;
+    gap:6px!important;
+  }
+  .btn-modal-primary svg{width:13px!important;height:13px!important}
+  .btn-modal-build{
+    flex:1.2!important;
+    min-height:40px!important;
+    padding:7px 10px!important;
+    font-size:11px!important;
+    font-weight:600!important;
+    border-radius:8px!important;
+    justify-content:center!important;
+    white-space:nowrap!important;
+    gap:4px!important;
+  }
+  .btn-modal-save{
+    flex:0 0 40px!important;
+    width:40px!important;
+    height:40px!important;
+    min-height:40px!important;
+    padding:0!important;
+    border-radius:8px!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+  }
+  .btn-modal-save span{display:none!important}
+  .btn-modal-save svg{width:17px!important;height:17px!important}
+  
+  /* Sleek Bottom Navigation Footer */
+  .modal-footer{
+    height:auto!important;
+    min-height:38px!important;
+    padding:3px 12px max(6px,env(safe-area-inset-bottom,0px))!important;
+    background:#131316!important;
+    border-top:1px solid rgba(255,255,255,.05)!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    flex-shrink:0!important;
+    gap:8px!important;
+    z-index:10;
+  }
+  .modal-nav-btn{
+    min-height:32px!important;
+    min-width:36px!important;
+    padding:4px 10px!important;
+    font-size:11px!important;
+    border-radius:6px!important;
+    gap:4px!important;
+  }
+  .modal-nav-btn span{display:inline!important;font-size:11px!important}
+  .modal-counter-mobile{
+    display:block!important;
+    font-size:11px!important;
+    font-family:monospace!important;
+    color:var(--accent)!important;
+    font-weight:700!important;
+    letter-spacing:.05em!important;
+  }
+  .modal-dots{display:none!important}
 }
 
 @media(max-width:800px){
@@ -713,10 +939,10 @@ textarea{resize:vertical;min-height:110px}
   .btn-expand-gallery{width:100%;justify-content:center;padding:14px 20px;min-height:48px}
   .btn-open-catalog-window{width:100%;justify-content:center;min-height:48px}
   .concept-modal.is-open{padding:0!important}
-  .modal-window{width:100vw!important;height:100vh!important;height:100dvh!important;max-height:100dvh!important;border-radius:0!important;border:none!important}
-  .window-titlebar{padding:env(safe-area-inset-top,0px) 12px 0;min-height:calc(48px + env(safe-area-inset-top,0px));height:auto}
-  .modal-footer{padding-bottom:max(10px,env(safe-area-inset-bottom,0px));min-height:calc(52px + env(safe-area-inset-bottom,0px));height:auto}
-  .modal-nav-btn{min-height:40px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
+  .modal-window{width:100vw!important;height:100vh!important;height:100dvh!important;max-height:100dvh!important;border-radius:0!important;border:none!important;overflow:hidden!important}
+  .window-titlebar{padding:env(safe-area-inset-top,0px) 10px 0!important;min-height:calc(44px + env(safe-area-inset-top,0px))!important;height:auto!important}
+  .modal-footer{padding-bottom:max(6px,env(safe-area-inset-bottom,0px))!important;min-height:calc(36px + env(safe-area-inset-bottom,0px))!important;height:auto!important}
+  .modal-nav-btn{min-height:32px!important;min-width:36px!important;display:inline-flex;align-items:center;justify-content:center}
 }
 
 @media(prefers-reduced-motion:reduce){
