@@ -1,4 +1,68 @@
+# robots.txt for https://www.codekraft.online/
+# Allow all search crawlers, AI search indexers, and social preview bots
+
 User-agent: *
 Allow: /
+Disallow: /tools/
+Disallow: /scratch/
+Disallow: /.git/
 
+# Major Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /assets/previews/
+Allow: /assets/images/
+Allow: /assets/icons/
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Social Preview Crawlers
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# AI Search Crawlers (Generative Search & Citations)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Canonical Sitemap and Host
 Sitemap: https://www.codekraft.online/sitemap.xml
+Host: https://www.codekraft.online

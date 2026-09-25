@@ -1,17 +1,43 @@
 {
-  "name": "CodeKraft — Digital Products & Website Concepts",
+  "name": "CodeKraft — High-Performance Websites & Digital Products",
   "short_name": "CodeKraft",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#141415",
-  "theme_color": "#141415",
-  "description": "Explore 18 premium website and digital product directions created for modern businesses.",
+  "orientation": "portrait-primary",
+  "background_color": "#0d0e12",
+  "theme_color": "#0d0e12",
+  "description": "CodeKraft designs and engineers high-performance websites, custom web applications, and secure digital products for ambitious businesses.",
+  "lang": "en",
+  "categories": [
+    "business",
+    "productivity",
+    "utilities",
+    "design"
+  ],
   "icons": [
     {
       "src": "/assets/icons/codekraft.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "The Collection",
+      "url": "/#collection",
+      "description": "Explore 18 curated website directions"
+    },
+    {
+      "name": "Services",
+      "url": "/#services",
+      "description": "Web development, custom software, cybersecurity"
+    },
+    {
+      "name": "Start a Project",
+      "url": "/#project",
+      "description": "Contact CodeKraft for your website or app"
     }
   ]
 }

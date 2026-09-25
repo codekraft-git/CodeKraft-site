@@ -1,117 +1,224 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.codekraft.online/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/studio.jpg</image:loc>
+      <image:title>CodeKraft — High-Performance Websites &amp; Digital Products</image:title>
+      <image:caption>Interactive showcase of premium website concepts and custom software architecture by CodeKraft</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/studio/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://www.codekraft.online/18-worldcup/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/studio.jpg</image:loc>
+      <image:title>CodeKraft Studio Concept</image:title>
+      <image:caption>Modern software and design studio website template</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/01-real-estate/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/01-real-estate.jpg</image:loc>
+      <image:title>LUXE ESTATES — Luxury Real Estate Website Concept</image:title>
+      <image:caption>Exceptional homes. An unmistakable sense of place.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/02-fine-dining/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/02-fine-dining.jpg</image:loc>
+      <image:title>MAISON EMBER — Fine Dining Website Concept</image:title>
+      <image:caption>A sensorial dining experience, shaped by fire and the seasons.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/03-saas/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/03-saas.jpg</image:loc>
+      <image:title>flowstack — SaaS / Software Website Concept</image:title>
+      <image:caption>Bring projects, people and progress into one beautifully clear workspace.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/04-architecture/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/04-architecture.jpg</image:loc>
+      <image:title>FORMA ATELIER — Architecture Website Concept</image:title>
+      <image:caption>Quiet architecture. Lasting impact. Spaces shaped around life.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/05-digital-agency/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/05-digital-agency.jpg</image:loc>
+      <image:title>NORTHSTAR® — Digital Agency Website Concept</image:title>
+      <image:caption>Independent minds. Unreasonable ambition. Brands that go somewhere.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/06-fitness/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/06-fitness.jpg</image:loc>
+      <image:title>FORGE ATHLETICS — Fitness &amp; Training Website Concept</image:title>
+      <image:caption>Built through effort. Strength, conditioning and a community that shows up.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/07-luxury-resort/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/07-luxury-resort.jpg</image:loc>
+      <image:title>AZURE COVE — Luxury Resort Website Concept</image:title>
+      <image:caption>An unhurried island escape, somewhere between the sky and the sea.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/08-fashion/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/08-fashion.jpg</image:loc>
+      <image:title>ATELIER NOIR — Fashion &amp; Apparel Website Concept</image:title>
+      <image:caption>Modern essentials. Considered silhouettes. A wardrobe beyond the season.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/09-healthcare/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/09-healthcare.jpg</image:loc>
+      <image:title>nova care — Healthcare Website Concept</image:title>
+      <image:caption>Thoughtful care for the whole you, from people who take the time.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/10-education/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/10-education.jpg</image:loc>
+      <image:title>SUMMIT ACADEMY — Education &amp; Learning Website Concept</image:title>
+      <image:caption>Learn by doing. Find your people. Build what comes next.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/11-automotive/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/11-automotive.jpg</image:loc>
+      <image:title>VELOR — Premium Automotive Website Concept</image:title>
+      <image:caption>A carefully curated collection for people who love the drive.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/12-construction/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/12-construction.jpg</image:loc>
+      <image:title>TERRAFORM — Construction &amp; Development Website Concept</image:title>
+      <image:caption>Built with purpose. Delivered with precision. Places that stand the test of time.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/13-travel/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/13-travel.jpg</image:loc>
+      <image:title>nomad trails — Travel &amp; Adventure Website Concept</image:title>
+      <image:caption>Small groups. Wild places. Journeys that stay with you.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/14-photography/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/14-photography.jpg</image:loc>
+      <image:title>FRAME &amp; LIGHT — Photography Website Concept</image:title>
+      <image:caption>Honest moments. Quiet landscapes. Photographs that feel like something.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/15-law-firm/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/15-law-firm.jpg</image:loc>
+      <image:title>HART &amp; CO. — Law Firm Website Concept</image:title>
+      <image:caption>Clear thinking. Sound counsel. A steady hand when it matters.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.codekraft.online/16-beauty-spa/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/16-beauty-spa.jpg</image:loc>
+      <image:title>VELORA — Beauty &amp; Spa Website Concept</image:title>
+      <image:caption>A softer pace. Thoughtful rituals. A little space to return to yourself.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codekraft.online/studio/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/studio.jpg</image:loc>
+      <image:title>CODEKRAFT STUDIO — Interactive Tech Studio Website Concept</image:title>
+      <image:caption>Digital products, built to work. Software engineering, product design, and interactive cosmic experience.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codekraft.online/18-worldcup/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.codekraft.online/assets/previews/18-worldcup.jpg</image:loc>
+      <image:title>WORLD CUP 26 — Sports &amp; Global Events Website Concept</image:title>
+      <image:caption>The official living tournament experience. Match center, interactive brackets, player spotlights and high-energy 3D visuals.</image:caption>
+    </image:image>
   </url>
 </urlset>

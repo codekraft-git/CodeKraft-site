@@ -1,0 +1,50 @@
+# CodeKraft
+
+> High-Performance Websites, Custom Web Applications & Cybersecurity Engineering
+
+CodeKraft is an independent digital engineering and design studio that designs, builds, and secures digital products, web applications, and modern websites for forward-thinking businesses and founders.
+
+- Website: https://www.codekraft.online/
+- Contact WhatsApp: +91 94007 50981 (https://wa.me/919400750981)
+- Direct Phone: +91 94007 50981 (tel:+919400750981)
+- Contact Email: codekraft.pvt@gmail.com
+- Instagram: https://instagram.com/codekraft.ig
+
+## Core Services
+
+- **Web Development**: Fast, high-conversion responsive websites, single-page applications, and interactive digital experiences.
+- **Mobile App Development**: Native and cross-platform mobile apps for iOS and Android built with Flutter and React Native.
+- **Custom Software Engineering**: Enterprise web applications, APIs, business workflow engines, and backend platforms.
+- **UI/UX & Product Design**: User research, wireframing, high-fidelity prototypes in Figma, and design systems.
+- **Cybersecurity & Hardening**: Security assessments, vulnerability scanning, TLS/SSL hardening, edge firewall configuration, and DDoS mitigation.
+- **Cloud & Edge Infrastructure**: Scalable cloud infrastructure on AWS, Vercel, and Cloudflare edge mesh with automated deployments.
+
+## Pre-Built Website Concepts & Directions
+
+CodeKraft offers 18 distinct pre-built, production-grade website directions across diverse industries:
+
+1. **LUXE ESTATES** (`/01-real-estate/`): Luxury real estate showcase with curated property listings and architectural photography.
+2. **MAISON EMBER** (`/02-fine-dining/`): Fine dining and culinary hospitality experience with digital menu and tasting reservations.
+3. **flowstack** (`/03-saas/`): SaaS product landing page with interactive workflow animations, tier pricing, and feature highlights.
+4. **FORMA ATELIER** (`/04-architecture/`): High-end architecture and spatial design studio portfolio.
+5. **NORTHSTAR®** (`/05-digital-agency/`): Creative and digital agency portfolio highlighting case studies and brand strategy.
+6. **FORGE ATHLETICS** (`/06-fitness/`): Elite fitness center, personal training, and athletic club website.
+7. **AZURE COVE** (`/07-luxury-resort/`): Ultra-luxury island resort and boutique retreat website with booking inquiry.
+8. **ATELIER NOIR** (`/08-fashion/`): Minimalist fashion house and designer apparel collection.
+9. **AURA HEALTH** (`/09-healthcare/`): Modern medical clinic, private healthcare, and telehealth platform.
+10. **LUMEN ACADEMY** (`/10-education/`): Executive learning academy and online courses platform.
+11. **APEX MOTORWORKS** (`/11-automotive/`): Performance and luxury automotive showroom.
+12. **TERRA BUILD** (`/12-construction/`): Commercial construction and civil engineering contracting firm.
+13. **VOYAGE CURATED** (`/13-travel/`): Bespoke private expeditions and luxury travel journeys.
+14. **SILVER & SALT** (`/14-photography/`): Fine art and editorial photography studio.
+15. **VANGUARD LEGAL** (`/15-law-firm/`): Corporate litigation and intellectual property law practice.
+16. **BOTANICA SPA** (`/16-beauty-spa/`): Holistic wellness, thermal spa, and restorative therapies.
+17. **CODEKRAFT STUDIO** (`/studio/`): Digital products and creative technology studio showcase.
+18. **WORLD CUP ARENA** (`/18-worldcup/`): Global sports tournament and live event portal.
+
+## Technology Stack
+
+- **Frontend**: Next.js, React, TypeScript, HTML5 Semantic markup, Modern Vanilla CSS, Tailwind CSS.
+- **Backend & APIs**: Node.js, Python, PostgreSQL, Redis, GraphQL, REST APIs.
+- **Cloud & DevOps**: AWS, Docker, Kubernetes, Cloudflare, Vercel Edge Mesh.
+- **Design**: Figma, Motion Design, Responsive Systems.
