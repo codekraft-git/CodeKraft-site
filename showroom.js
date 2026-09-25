@@ -294,7 +294,7 @@ document.addEventListener('click', e => {
   }
 
   // If clicking favorite button, build CTA button, or chip clear, do not open modal
-  if (e.target.closest('.favorite') || e.target.closest('[data-build]') || e.target.closest('#chip-clear-btn')) {
+  if (e.target.closest('.favorite') || e.target.closest('[data-save]') || e.target.closest('[data-build]') || e.target.closest('#chip-clear-btn')) {
     return;
   }
 
@@ -302,24 +302,21 @@ document.addEventListener('click', e => {
   const heroTile = e.target.closest('.hero-tile');
   if (heroTile) {
     e.preventDefault();
-    const id = heroTile.dataset.modalId || (heroTile.href ? heroTile.href.match(/(\d+)/)?.[1] : null);
-    if (id) {
-      openConceptModal(id);
-      return;
-    }
+    e.stopPropagation();
+    const id = heroTile.dataset.modalId || (heroTile.href ? heroTile.href.match(/(\d+)/)?.[1] : 1);
+    openConceptModal(id);
+    return;
   }
 
-  // Check if click is on or within a template card (preview image, quick window button, action-view, or brand heading)
+  // Check if click is on or within a template card
   const card = e.target.closest('.template-card');
-  if (card) {
-    const isTarget = e.target.closest('.quick-view-btn, .preview-link, .card-preview, .action-view, h3, .preview-hover');
-    if (isTarget) {
-      e.preventDefault();
-      openConceptModal(card.dataset.id);
-      return;
-    }
+  if (card && card.dataset.id) {
+    e.preventDefault();
+    e.stopPropagation();
+    openConceptModal(card.dataset.id);
+    return;
   }
-});
+}, true);
 
 // Select Concept For Project Form (Replaces Design Direction dropdown)
 function selectConceptForBuild(id) {
