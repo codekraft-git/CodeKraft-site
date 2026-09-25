@@ -286,12 +286,38 @@ if (modalSaveBtn) {
   });
 }
 
-// Quick View Buttons on Cards
+// Intercept all template clicks so that clicking ANY template first opens the Quick View window
 document.addEventListener('click', e => {
-  const qBtn = e.target.closest('.quick-view-btn');
-  if (qBtn) {
+  // If click is inside the modal itself, let normal actions work (e.g. "Explore Live Website", "Build with This Concept", close, dots)
+  if (e.target.closest('#concept-modal')) {
+    return;
+  }
+
+  // If clicking favorite button, build CTA button, or chip clear, do not open modal
+  if (e.target.closest('.favorite') || e.target.closest('[data-build]') || e.target.closest('#chip-clear-btn')) {
+    return;
+  }
+
+  // Check if click is on a hero preview tile
+  const heroTile = e.target.closest('.hero-tile');
+  if (heroTile) {
     e.preventDefault();
-    openConceptModal(qBtn.dataset.modalId);
+    const id = heroTile.dataset.modalId || (heroTile.href ? heroTile.href.match(/(\d+)/)?.[1] : null);
+    if (id) {
+      openConceptModal(id);
+      return;
+    }
+  }
+
+  // Check if click is on or within a template card (preview image, quick window button, action-view, or brand heading)
+  const card = e.target.closest('.template-card');
+  if (card) {
+    const isTarget = e.target.closest('.quick-view-btn, .preview-link, .card-preview, .action-view, h3, .preview-hover');
+    if (isTarget) {
+      e.preventDefault();
+      openConceptModal(card.dataset.id);
+      return;
+    }
   }
 });
 
@@ -576,7 +602,7 @@ if (proofNum) {
     entries.forEach(entry => {
       if (entry.isIntersecting && !counted) {
         counted = true;
-        const target = 18;
+        const target = catalog.length;
         const duration = 1200;
         let startTime = null;
         function step(timestamp) {
@@ -728,5 +754,13 @@ filter();
 syncWhatsAppLinks();
 initAllTextLoops();
 initInfiniteSliders();
-
-
+// URL param check to auto-open quick view or brief selection
+const urlParams = new URLSearchParams(window.location.search);
+const templateParam = urlParams.get('template') || urlParams.get('preview');
+if (templateParam) {
+  if (window.location.hash === '#project') {
+    selectConceptForBuild(templateParam);
+  } else {
+    openConceptModal(templateParam);
+  }
+}
