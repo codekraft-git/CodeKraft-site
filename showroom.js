@@ -187,7 +187,7 @@ function updateModalContent(index) {
   const indEl = $('#modal-industry'); if (indEl) indEl.textContent = item.industry;
   const descEl = $('#modal-desc'); if (descEl) descEl.textContent = item.description;
   const mobileCounter = $('#modal-counter-mobile'); if (mobileCounter) mobileCounter.textContent = `${String(item.id).padStart(2,'0')} / ${catalog.length}`;
-  const liveBtn = $('#modal-open-live-btn'); if (liveBtn) liveBtn.href = `${item.folder}/index.html`;
+  const liveBtn = $('#modal-open-live-btn'); if (liveBtn) liveBtn.href = `${item.folder}/`;
 
   // Update dots
   const dotsContainer = $('#modal-dots-indicator');
