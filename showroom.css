@@ -19,7 +19,7 @@ h1,h2,h3,p{margin:0}
 h1,h2,h3{line-height:1.1;letter-spacing:-.055em;font-weight:500}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit}
-button{cursor:pointer;color:inherit}
+button{cursor:pointer;color:inherit;background:transparent;border:0;padding:0;margin:0;-webkit-appearance:none;appearance:none}
 button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:2px solid var(--accent);outline-offset:5px}
 ::selection{color:var(--bg);background:var(--accent)}
@@ -239,11 +239,16 @@ body.drawer-open{overflow:hidden!important}
 .card-info>p{grid-column:1/-1;color:#898590;font-size:11.5px;line-height:1.75;margin:4px 0 8px}
 .card-actions{grid-column:1/-1;display:flex;gap:20px;border-top:1px solid var(--line);padding-top:14px;margin-top:auto;font-size:11px}
 .card-actions a,
-.card-actions .action-view{display:flex;align-items:center;justify-content:space-between;gap:14px;flex:1;transition:color .2s;border:0;background:transparent;padding:0;margin:0;color:inherit;cursor:pointer;font-size:11px;font-family:inherit}
-.card-actions a:nth-child(2),
-.card-actions .action-build{color:#aaa2bc;border-left:1px solid var(--line);padding-left:18px}
+.card-actions button,
+.card-actions .action-view,
+.card-actions .action-build{display:flex;align-items:center;justify-content:space-between;gap:14px;flex:1;transition:color .2s;border:0!important;background:transparent!important;background-color:transparent!important;padding:0!important;margin:0!important;color:var(--ink)!important;cursor:pointer;font-size:11px;font-family:inherit;-webkit-appearance:none!important;appearance:none!important;box-shadow:none!important;text-decoration:none}
 .card-actions a:hover,
-.card-actions .action-view:hover{color:var(--accent)}
+.card-actions button:hover,
+.card-actions .action-view:hover{color:var(--accent)!important;background:transparent!important}
+.card-actions a:nth-child(2),
+.card-actions .action-build{color:#aaa2bc!important;border-left:1px solid var(--line)!important;padding-left:18px!important}
+.card-actions a:nth-child(2):hover,
+.card-actions .action-build:hover{color:var(--accent)!important}
 
 /* Expand / Collapse System */
 .gallery.is-collapsed .template-card.is-collapsed{display:none!important}
