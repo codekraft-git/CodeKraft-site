@@ -321,6 +321,27 @@ textarea{resize:vertical;min-height:110px}
 #project-result:empty{display:none}
 #project-result a,#project-result button{margin-top:12px;display:inline-block;margin-right:18px;color:var(--ink);border:0;border-bottom:1px solid var(--ink);background:none;padding:6px 0;font-size:11px}
 
+/* Technology Stack Infinite Marquee Slider (Motion Primitives) */
+.tech-marquee-section{padding:90px 0 75px;position:relative;overflow:clip;border-top:1px solid var(--line);background:linear-gradient(180deg,transparent 0%,rgba(27,27,30,.35) 50%,transparent 100%)}
+.tech-marquee-header{margin-bottom:38px}
+.tech-header-badge{display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:.17em;font-weight:500;color:#b5b3ba;margin-bottom:18px}
+.tech-marquee-header h2{font-size:clamp(2rem,3.8vw,3.2rem);line-height:1.15;letter-spacing:-.04em;font-weight:500;max-width:680px}
+.tech-subhead{color:var(--muted);font-size:13.5px;line-height:1.8;max-width:580px;margin-top:14px}
+.infinite-slider-wrapper{position:relative;width:100%;overflow:hidden;padding:10px 0;mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);user-select:none}
+.infinite-slider-track{display:flex;gap:24px;width:max-content;will-change:transform}
+.track-row-1{animation:infiniteScroll 42s linear infinite}
+.track-row-2{animation:infiniteScrollReverse 46s linear infinite}
+.infinite-slider-wrapper:hover .infinite-slider-track{animation-play-state:paused}
+@keyframes infiniteScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes infiniteScrollReverse{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+.tech-card{display:inline-flex;align-items:center;gap:14px;min-width:215px;padding:12px 18px;background:rgba(255,255,255,.03);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.08);border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.35);transition:transform .28s cubic-bezier(.16,1,.3,1),border-color .25s,background .25s,box-shadow .25s;cursor:default;flex-shrink:0}
+.tech-card:hover{transform:translateY(-3px) scale(1.02);border-color:rgba(212,197,255,.35);background:rgba(255,255,255,.07);box-shadow:0 10px 28px rgba(132,112,179,.2)}
+.tech-icon-box{width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;flex-shrink:0;transition:transform .25s,background .25s}
+.tech-card:hover .tech-icon-box{transform:scale(1.08);background:rgba(255,255,255,.09)}
+.tech-meta{display:flex;flex-direction:column;gap:2px}
+.tech-name{font-size:13.5px;font-weight:600;color:#f4f4f5;letter-spacing:-.01em}
+.tech-role{font-size:10.5px;color:var(--muted);letter-spacing:.02em}
+
 /* Footer */
 .footer{padding:50px 0 25px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:45px}
 .footer .logo{font-size:27px}
@@ -544,6 +565,11 @@ textarea{resize:vertical;min-height:110px}
   .hero-loop-badge{font-size:11.5px;padding:5px 12px 5px 10px;gap:7px;margin-bottom:16px}
   .hero-loop-text{font-size:11.5px;gap:5px}
   .collection-loop-pill{font-size:11px;padding:4px 10px;gap:6px}
+  .tech-marquee-section{padding:55px 0 40px}
+  .tech-card{min-width:180px;padding:10px 14px;gap:10px}
+  .tech-icon-box{width:32px;height:32px;border-radius:7px}
+  .tech-name{font-size:12px}
+  .tech-role{font-size:9.5px}
   .btn-expand-gallery{width:100%;justify-content:center;padding:12px 20px}
   .btn-open-catalog-window{width:100%;justify-content:center}
   .modal-window{width:100vw;height:100vh;max-height:100vh;border-radius:0}
@@ -555,4 +581,5 @@ textarea{resize:vertical;min-height:110px}
   *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .reveal-on-scroll{opacity:1!important;transform:none!important}
   .text-loop-item{transition:opacity .2s ease!important;transform:none!important;filter:none!important}
+  .infinite-slider-track{animation:none!important}
 }

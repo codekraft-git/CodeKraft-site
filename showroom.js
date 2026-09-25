@@ -658,9 +658,67 @@ function initAllTextLoops() {
   });
 }
 
+// ==========================================================================
+// InfiniteSlider Component (Motion Primitives speedOnHover & gap)
+// ==========================================================================
+function initInfiniteSliders() {
+  const wrappers = document.querySelectorAll('.infinite-slider-wrapper');
+  if (!wrappers.length) return;
+
+  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isReducedMotion) return;
+
+  wrappers.forEach(wrapper => {
+    const track = wrapper.querySelector('.infinite-slider-track');
+    if (!track) return;
+
+    // Transition from CSS fallback to ultra-smooth JS lerp engine
+    track.style.animation = 'none';
+
+    const baseSpeed = parseFloat(wrapper.dataset.speed || '0.85');
+    const hoverSpeed = parseFloat(wrapper.dataset.hoverSpeed || '0.2');
+    const isReverse = track.classList.contains('reverse');
+
+    let currentSpeed = baseSpeed;
+    let targetSpeed = baseSpeed;
+    let pos = isReverse ? -track.scrollWidth / 2 : 0;
+    let animId = null;
+
+    wrapper.addEventListener('mouseenter', () => { targetSpeed = hoverSpeed; });
+    wrapper.addEventListener('mouseleave', () => { targetSpeed = baseSpeed; });
+
+    function tick() {
+      if (document.hidden) {
+        animId = requestAnimationFrame(tick);
+        return;
+      }
+
+      currentSpeed += (targetSpeed - currentSpeed) * 0.08;
+      const halfWidth = track.scrollWidth / 2;
+
+      if (halfWidth > 0) {
+        if (isReverse) {
+          pos += currentSpeed;
+          if (pos >= 0) pos -= halfWidth;
+        } else {
+          pos -= currentSpeed;
+          if (Math.abs(pos) >= halfWidth) pos += halfWidth;
+        }
+        track.style.transform = `translate3d(${pos.toFixed(2)}px, 0, 0)`;
+      }
+
+      animId = requestAnimationFrame(tick);
+    }
+
+    animId = requestAnimationFrame(tick);
+  });
+}
+
 // Initial sync on load
 syncSelection();
 filter();
 syncWhatsAppLinks();
 initAllTextLoops();
+initInfiniteSliders();
+
 
