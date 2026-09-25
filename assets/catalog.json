@@ -28,123 +28,6 @@
   },
   {
     "id": 4,
-    "folder": "04-architecture",
-    "brand": "FORMA ATELIER",
-    "industry": "Architecture",
-    "description": "Quiet architecture. Lasting impact. Spaces shaped around life.",
-    "category": "Creative",
-    "color": "#f2f1ed"
-  },
-  {
-    "id": 5,
-    "folder": "05-digital-agency",
-    "brand": "NORTHSTAR®",
-    "industry": "Digital Agency",
-    "description": "Independent minds. Unreasonable ambition. Brands that go somewhere.",
-    "category": "Creative",
-    "color": "#def542"
-  },
-  {
-    "id": 6,
-    "folder": "06-fitness",
-    "brand": "FORGE ATHLETICS",
-    "industry": "Fitness & Training",
-    "description": "Built through effort. Strength, conditioning and a community that shows up.",
-    "category": "Lifestyle",
-    "color": "#171717"
-  },
-  {
-    "id": 7,
-    "folder": "07-luxury-resort",
-    "brand": "AZURE COVE",
-    "industry": "Luxury Resort",
-    "description": "An unhurried island escape, somewhere between the sky and the sea.",
-    "category": "Hospitality",
-    "color": "#edf2ed"
-  },
-  {
-    "id": 8,
-    "folder": "08-fashion",
-    "brand": "ATELIER NOIR",
-    "industry": "Fashion & Apparel",
-    "description": "Modern essentials. Considered silhouettes. A wardrobe beyond the season.",
-    "category": "Lifestyle",
-    "color": "#f0efeb"
-  },
-  {
-    "id": 9,
-    "folder": "09-healthcare",
-    "brand": "nova care",
-    "industry": "Healthcare",
-    "description": "Thoughtful care for the whole you, from people who take the time.",
-    "category": "Professional",
-    "color": "#eff5ef"
-  },
-  {
-    "id": 10,
-    "folder": "10-education",
-    "brand": "SUMMIT ACADEMY",
-    "industry": "Education & Learning",
-    "description": "Learn by doing. Find your people. Build what comes next.",
-    "category": "Professional",
-    "color": "#f6f3e8"
-  },
-  {
-    "id": 11,
-    "folder": "11-automotive",
-    "brand": "VELOR",
-    "industry": "Premium Automotive",
-    "description": "A carefully curated collection for people who love the drive.",
-    "category": "Business",
-    "color": "#111315"
-  },
-  {
-    "id": 12,
-    "folder": "12-construction",
-    "brand": "TERRAFORM",
-    "industry": "Construction & Development",
-    "description": "Built with purpose. Delivered with precision. Places that stand the test of time.",
-    "category": "Business",
-    "color": "#edece6"
-  },
-  {
-    "id": 13,
-    "folder": "13-travel",
-    "brand": "nomad trails",
-    "industry": "Travel & Adventure",
-    "description": "Small groups. Wild places. Journeys that stay with you.",
-    "category": "Lifestyle",
-    "color": "#f3f0e4"
-  },
-  {
-    "id": 14,
-    "folder": "14-photography",
-    "brand": "FRAME & LIGHT",
-    "industry": "Photography",
-    "description": "Honest moments. Quiet landscapes. Photographs that feel like something.",
-    "category": "Creative",
-    "color": "#faf9f5"
-  },
-  {
-    "id": 15,
-    "folder": "15-law-firm",
-    "brand": "HART & CO.",
-    "industry": "Law Firm",
-    "description": "Clear thinking. Sound counsel. A steady hand when it matters.",
-    "category": "Professional",
-    "color": "#1f2d32"
-  },
-  {
-    "id": 16,
-    "folder": "16-beauty-spa",
-    "brand": "VELORA",
-    "industry": "Beauty & Spa",
-    "description": "A softer pace. Thoughtful rituals. A little space to return to yourself.",
-    "category": "Lifestyle",
-    "color": "#f4ede7"
-  },
-  {
-    "id": 17,
     "folder": "studio",
     "brand": "CODEKRAFT STUDIO",
     "industry": "Interactive Tech Studio",
@@ -153,7 +36,7 @@
     "color": "#060913"
   },
   {
-    "id": 18,
+    "id": 5,
     "folder": "18-worldcup",
     "brand": "WORLD CUP 26",
     "industry": "Sports & Global Events",
@@ -162,12 +45,129 @@
     "color": "#eab308"
   },
   {
-    "id": 19,
+    "id": 6,
     "folder": "resort",
     "brand": "KERALASTAY",
     "industry": "Boutique Resort & Booking",
     "description": "Verified boutique resorts, backwater sanctuaries and heritage villas across Kerala with real-time maps and direct bookings.",
     "category": "Hospitality",
     "color": "#1a3c34"
+  },
+  {
+    "id": 7,
+    "folder": "04-architecture",
+    "brand": "FORMA ATELIER",
+    "industry": "Architecture",
+    "description": "Quiet architecture. Lasting impact. Spaces shaped around life.",
+    "category": "Creative",
+    "color": "#f2f1ed"
+  },
+  {
+    "id": 8,
+    "folder": "05-digital-agency",
+    "brand": "NORTHSTAR®",
+    "industry": "Digital Agency",
+    "description": "Independent minds. Unreasonable ambition. Brands that go somewhere.",
+    "category": "Creative",
+    "color": "#def542"
+  },
+  {
+    "id": 9,
+    "folder": "06-fitness",
+    "brand": "FORGE ATHLETICS",
+    "industry": "Fitness & Training",
+    "description": "Built through effort. Strength, conditioning and a community that shows up.",
+    "category": "Lifestyle",
+    "color": "#171717"
+  },
+  {
+    "id": 10,
+    "folder": "07-luxury-resort",
+    "brand": "AZURE COVE",
+    "industry": "Luxury Resort",
+    "description": "An unhurried island escape, somewhere between the sky and the sea.",
+    "category": "Hospitality",
+    "color": "#edf2ed"
+  },
+  {
+    "id": 11,
+    "folder": "08-fashion",
+    "brand": "ATELIER NOIR",
+    "industry": "Fashion & Apparel",
+    "description": "Modern essentials. Considered silhouettes. A wardrobe beyond the season.",
+    "category": "Lifestyle",
+    "color": "#f0efeb"
+  },
+  {
+    "id": 12,
+    "folder": "09-healthcare",
+    "brand": "nova care",
+    "industry": "Healthcare",
+    "description": "Thoughtful care for the whole you, from people who take the time.",
+    "category": "Professional",
+    "color": "#eff5ef"
+  },
+  {
+    "id": 13,
+    "folder": "10-education",
+    "brand": "SUMMIT ACADEMY",
+    "industry": "Education & Learning",
+    "description": "Learn by doing. Find your people. Build what comes next.",
+    "category": "Professional",
+    "color": "#f6f3e8"
+  },
+  {
+    "id": 14,
+    "folder": "11-automotive",
+    "brand": "VELOR",
+    "industry": "Premium Automotive",
+    "description": "A carefully curated collection for people who love the drive.",
+    "category": "Business",
+    "color": "#111315"
+  },
+  {
+    "id": 15,
+    "folder": "12-construction",
+    "brand": "TERRAFORM",
+    "industry": "Construction & Development",
+    "description": "Built with purpose. Delivered with precision. Places that stand the test of time.",
+    "category": "Business",
+    "color": "#edece6"
+  },
+  {
+    "id": 16,
+    "folder": "13-travel",
+    "brand": "nomad trails",
+    "industry": "Travel & Adventure",
+    "description": "Small groups. Wild places. Journeys that stay with you.",
+    "category": "Lifestyle",
+    "color": "#f3f0e4"
+  },
+  {
+    "id": 17,
+    "folder": "14-photography",
+    "brand": "FRAME & LIGHT",
+    "industry": "Photography",
+    "description": "Honest moments. Quiet landscapes. Photographs that feel like something.",
+    "category": "Creative",
+    "color": "#faf9f5"
+  },
+  {
+    "id": 18,
+    "folder": "15-law-firm",
+    "brand": "HART & CO.",
+    "industry": "Law Firm",
+    "description": "Clear thinking. Sound counsel. A steady hand when it matters.",
+    "category": "Professional",
+    "color": "#1f2d32"
+  },
+  {
+    "id": 19,
+    "folder": "16-beauty-spa",
+    "brand": "VELORA",
+    "industry": "Beauty & Spa",
+    "description": "A softer pace. Thoughtful rituals. A little space to return to yourself.",
+    "category": "Lifestyle",
+    "color": "#f4ede7"
   }
 ]
